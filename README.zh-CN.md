@@ -78,7 +78,7 @@ npm run check
 
 请访问项目站点查询和复制各平台的 base URL：
 
-**https://your-username.github.io/ai-base-url**
+**https://xiangxiangdong111-ops.github.io/ai-base-url/**
 
 站点支持搜索、协议筛选、一键复制和语言切换（English / 中文）。
 

@@ -78,7 +78,7 @@ When adding or changing a provider, edit [data/providers.json](data/providers.js
 
 Browse and look up base URLs on the project site:
 
-**https://your-username.github.io/ai-base-url**
+**https://xiangxiangdong111-ops.github.io/ai-base-url/**
 
 The site supports search, protocol filtering, one-click copy, and language switching (English / 中文).
 
