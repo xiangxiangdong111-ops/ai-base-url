@@ -24,10 +24,8 @@
     <main class="layout">
       <section class="registry-panel" aria-label="Base URL list" data-i18n-aria-label="baseUrlRegistry">
         <div class="panel-heading">
-          <div class="heading-title-row">
-            <p id="registry-count" class="muted">Loading providers...</p>
-          </div>
           <div class="tabs" role="tablist" aria-label="Protocol filter" data-i18n-aria-label="protocolFilter">
+            <p id="registry-count" class="results-count" aria-live="polite">Loading providers...</p>
             <button class="tab is-active" type="button" data-protocol="all" data-i18n="tabAll">All</button>
             <button class="tab" type="button" data-protocol="openai-compatible">OpenAI</button>
             <button class="tab" type="button" data-protocol="anthropic-compatible">Anthropic</button>

@@ -151,12 +151,6 @@ h1 {
   z-index: 1;
 }
 
-.panel-heading > div:first-child {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
 h2 {
   margin-bottom: 0;
   font-size: 1.05rem;
@@ -263,8 +257,8 @@ h2 {
 
 .panel-heading {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: flex-end;
   gap: 16px;
   margin-bottom: 14px;
   position: relative;
@@ -292,8 +286,19 @@ h2 {
   font-weight: 500;
 }
 
+.results-count {
+  margin: 0 4px 0 0;
+  padding: 0 8px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 .tabs {
   display: inline-flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 6px;
   padding: 6px;
