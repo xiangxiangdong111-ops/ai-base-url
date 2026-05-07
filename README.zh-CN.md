@@ -2,6 +2,14 @@
 
 [English](README.md)
 
+## 查看与使用
+
+直接打开项目站点，即可快速查看现有平台的 base URL：
+
+**[https://xiangxiangdong111-ops.github.io/ai-base-url/](https://xiangxiangdong111-ops.github.io/ai-base-url/)**
+
+站点支持搜索、协议筛选、一键复制和语言切换（English / 中文）。
+
 一个专注、结构化、可机器读取的 AI API Base URL 注册表。
 
 AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路径和命名方式里。这个项目解决一个非常实际的问题：接入某个平台、某种协议时，开发者到底应该配置哪个 base URL？
@@ -73,14 +81,6 @@ npm run check
 - `npm run check` 运行校验，并确认生成后的页面数据是最新的。
 
 新增或修改平台时，先改 [data/providers.json](data/providers.json)。其他展示层都应该从这份文件派生。
-
-## 查看与使用
-
-请访问项目站点查询和复制各平台的 base URL：
-
-**https://xiangxiangdong111-ops.github.io/ai-base-url/**
-
-站点支持搜索、协议筛选、一键复制和语言切换（English / 中文）。
 
 ## 贡献方式
 

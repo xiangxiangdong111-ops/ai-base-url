@@ -2,6 +2,14 @@
 
 [简体中文](README.zh-CN.md)
 
+## Usage
+
+Open the live directory to quickly browse current AI provider base URLs:
+
+**[https://xiangxiangdong111-ops.github.io/ai-base-url/](https://xiangxiangdong111-ops.github.io/ai-base-url/)**
+
+The site supports search, protocol filtering, one-click copy, and language switching (English / 中文).
+
 A focused, machine-readable registry for AI API base URLs.
 
 AI providers expose compatible APIs through different base URLs, docs pages, regions, and naming conventions. This project gives developers one clean place to answer the practical question: what base URL should I configure for this provider and protocol?
@@ -73,14 +81,6 @@ npm run check
 - `npm run check` runs validation and confirms the generated docs data is current.
 
 When adding or changing a provider, edit [data/providers.json](data/providers.json) first. Everything else should follow from that file.
-
-## Usage
-
-Browse and look up base URLs on the project site:
-
-**https://xiangxiangdong111-ops.github.io/ai-base-url/**
-
-The site supports search, protocol filtering, one-click copy, and language switching (English / 中文).
 
 ## Contributing
 
