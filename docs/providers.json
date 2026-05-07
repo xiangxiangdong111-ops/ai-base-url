@@ -18,9 +18,9 @@
         "id": "openai-v1",
         "protocol": "openai-compatible",
         "baseUrl": "https://api.openai.com/v1",
-        "source": "https://platform.openai.com/docs/api-reference",
+        "source": "https://developers.openai.com/api/docs/api-reference/authentication",
         "lastVerified": "2026-05-07",
-        "notes": "Official OpenAI API endpoint."
+        "notes": "Official API reference shows curl requests to https://api.openai.com/v1/models and https://api.openai.com/v1/chat/completions."
       }
     ]
   },
@@ -41,9 +41,9 @@
         "id": "anthropic-api",
         "protocol": "anthropic-compatible",
         "baseUrl": "https://api.anthropic.com",
-        "source": "https://docs.anthropic.com/en/api/messages",
+        "source": "https://platform.claude.com/docs/en/api/getting-started",
         "lastVerified": "2026-05-07",
-        "notes": "Official Anthropic Messages API endpoint."
+        "notes": "Official API overview states that the Claude API is a RESTful API at https://api.anthropic.com."
       }
     ]
   },
@@ -66,7 +66,7 @@
         "baseUrl": "https://api.deepseek.com",
         "source": "https://api-docs.deepseek.com/",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible API endpoint."
+        "notes": "Official docs list base_url=https://api.deepseek.com for OpenAI-compatible calls."
       }
     ]
   },
@@ -88,9 +88,9 @@
         "id": "moonshot-openai",
         "protocol": "openai-compatible",
         "baseUrl": "https://api.moonshot.cn/v1",
-        "source": "https://platform.moonshot.cn/docs",
+        "source": "https://platform.kimi.com/docs/guide/start-using-kimi-api",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible API endpoint for Moonshot/Kimi."
+        "notes": "Official Kimi quickstart configures OpenAI(..., base_url=\"https://api.moonshot.cn/v1\")."
       }
     ]
   },
@@ -114,9 +114,9 @@
         "id": "zhipu-openai",
         "protocol": "openai-compatible",
         "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
-        "source": "https://docs.bigmodel.cn/",
+        "source": "https://docs.bigmodel.cn/cn/guide/start/quick-start",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible API endpoint."
+        "notes": "Official quickstart posts to https://open.bigmodel.cn/api/paas/v4/chat/completions and distinguishes a separate coding-only endpoint."
       }
     ]
   },
@@ -132,7 +132,9 @@
     "website": "https://dashscope.aliyun.com",
     "domains": [
       "dashscope.aliyun.com",
-      "dashscope.aliyuncs.com"
+      "dashscope.aliyuncs.com",
+      "dashscope-us.aliyuncs.com",
+      "dashscope-intl.aliyuncs.com"
     ],
     "endpoints": [
       {
@@ -141,7 +143,23 @@
         "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible mode endpoint for DashScope."
+        "notes": "Official compatibility docs list the Beijing region BASE_URL as https://dashscope.aliyuncs.com/compatible-mode/v1."
+      },
+      {
+        "id": "dashscope-openai-compatible-us",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
+        "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
+        "lastVerified": "2026-05-07",
+        "notes": "Official compatibility docs list the US region BASE_URL as https://dashscope-us.aliyuncs.com/compatible-mode/v1."
+      },
+      {
+        "id": "dashscope-openai-compatible-intl",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
+        "lastVerified": "2026-05-07",
+        "notes": "Official compatibility docs list the Singapore region BASE_URL as https://dashscope-intl.aliyuncs.com/compatible-mode/v1."
       }
     ]
   },
@@ -162,9 +180,9 @@
         "id": "siliconflow-openai",
         "protocol": "openai-compatible",
         "baseUrl": "https://api.siliconflow.cn/v1",
-        "source": "https://docs.siliconflow.cn/",
+        "source": "https://docs.siliconflow.cn/cn/userguide/quickstart",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible API endpoint."
+        "notes": "Official quickstart shows base_url=\"https://api.siliconflow.cn/v1\" in the OpenAI client example."
       }
     ]
   },
@@ -184,9 +202,9 @@
         "id": "openrouter-openai",
         "protocol": "openai-compatible",
         "baseUrl": "https://openrouter.ai/api/v1",
-        "source": "https://openrouter.ai/docs",
+        "source": "https://openrouter.ai/docs/quickstart",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible aggregator endpoint."
+        "notes": "Official quickstart sets baseURL to https://openrouter.ai/api/v1 and sends requests to /chat/completions there."
       }
     ]
   },
@@ -206,7 +224,7 @@
         "baseUrl": "https://api.groq.com/openai/v1",
         "source": "https://console.groq.com/docs/openai",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible API endpoint."
+        "notes": "Official OpenAI-compatibility docs set base_url=\"https://api.groq.com/openai/v1\"."
       }
     ]
   },
@@ -220,16 +238,50 @@
     "website": "https://www.together.ai",
     "domains": [
       "together.ai",
-      "api.together.xyz"
+      "api.together.ai"
     ],
     "endpoints": [
       {
         "id": "together-openai",
         "protocol": "openai-compatible",
-        "baseUrl": "https://api.together.xyz/v1",
-        "source": "https://docs.together.ai/docs/openai-api-compatibility",
+        "baseUrl": "https://api.together.ai/v1",
+        "source": "https://docs.together.ai/reference/chat-completions.md",
         "lastVerified": "2026-05-07",
-        "notes": "OpenAI-compatible API endpoint."
+        "notes": "Official chat completions OpenAPI defines server https://api.together.ai/v1 and the cURL sample posts to https://api.together.ai/v1/chat/completions."
+      }
+    ]
+  },
+  {
+    "id": "minimax",
+    "name": "MiniMax",
+    "aliases": [
+      "mini-max",
+      "minimax-ai",
+      "minimaxi"
+    ],
+    "website": "https://www.minimax.io",
+    "domains": [
+      "minimaxi.com",
+      "minimax.io",
+      "api.minimaxi.com",
+      "api.minimax.io"
+    ],
+    "endpoints": [
+      {
+        "id": "minimax-openai-cn",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://api.minimaxi.com/v1",
+        "source": "https://platform.minimaxi.com/docs/api-reference/text-chat",
+        "lastVerified": "2026-05-07",
+        "notes": "Official China mainland OpenAI-compatible docs send POST requests to https://api.minimaxi.com/v1/chat/completions."
+      },
+      {
+        "id": "minimax-openai-global",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://api.minimax.io/v1",
+        "source": "https://platform.minimax.io/docs/guides/text-generation",
+        "lastVerified": "2026-05-07",
+        "notes": "Official global text-generation docs list base_url (OpenAI-compatible) as https://api.minimax.io/v1 and show curl to /v1/chat/completions."
       }
     ]
   }

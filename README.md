@@ -21,7 +21,7 @@ This is not an awesome list. The core asset is [data/providers.json](data/provid
 ```text
 data/providers.json        Canonical registry data
 docs/index.html            Static GitHub Pages UI
-docs/app.js                Browser search, language switch, and online validation
+docs/app.js                Browser search, language switch, filtering, and copy actions
 docs/providers.json        Generated copy for GitHub Pages
 scripts/validate.js        Registry shape and uniqueness checks
 scripts/sync-docs-data.js  Syncs data/providers.json to docs/providers.json

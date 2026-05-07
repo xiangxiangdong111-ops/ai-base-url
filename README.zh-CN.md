@@ -21,7 +21,7 @@ AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路
 ```text
 data/providers.json        唯一事实源 registry 数据
 docs/index.html            GitHub Pages 静态页面
-docs/app.js                浏览器搜索、语言切换和在线校验
+docs/app.js                浏览器搜索、语言切换、筛选和复制交互
 docs/providers.json        面向 GitHub Pages 的生成副本
 scripts/validate.js        registry 结构和唯一性校验
 scripts/sync-docs-data.js  同步 data/providers.json 到 docs/providers.json
