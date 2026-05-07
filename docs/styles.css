@@ -396,7 +396,7 @@ td {
   padding: 11px 12px;
   border-bottom: 1px solid rgba(120, 141, 160, 0.14);
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
   font-size: 0.92rem;
 }
 
@@ -429,16 +429,19 @@ tbody tr:last-child td {
 }
 
 .provider-name {
+  display: block;
   font-weight: 700;
   font-size: 1.02rem;
+  line-height: 1.2;
   letter-spacing: -0.02em;
 }
 
 .aliases {
   display: block;
-  margin-top: 4px;
+  margin-top: 3px;
   color: var(--muted);
   font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 .protocol-pill {
