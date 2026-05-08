@@ -30,46 +30,60 @@
       <section class="registry-panel" aria-label="Base URL list" data-i18n-aria-label="baseUrlRegistry">
         <div class="panel-heading">
           <div class="filter-toolbar">
-            <div class="filter-meta">
-              <p class="filter-title" data-i18n="filterTitle">Refine</p>
-              <p id="registry-count" class="results-count" aria-live="polite">Loading providers...</p>
+            <div class="toolbar-search-group">
+              <label class="search-label" for="search-input" data-i18n="searchLabel">Search</label>
+              <div class="search-wrapper toolbar-search">
+                <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input id="search-input" class="search-input" type="search" placeholder="Provider, alias, domain, or base URL" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
+              </div>
             </div>
             <div class="filter-controls">
               <label class="filter-control">
                 <span class="filter-caption" data-i18n="protocolFilter">Protocol filter</span>
-                <select id="protocol-filter" class="filter-select" data-i18n-aria-label="protocolFilter">
-                  <option value="all" data-i18n="protocolAll">All protocols</option>
-                  <option value="openai-compatible">OpenAI</option>
-                  <option value="anthropic-compatible">Anthropic</option>
-                </select>
+                <div class="filter-dropdown" data-filter-kind="protocol">
+                  <button id="protocol-filter" class="filter-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria-label="protocolFilter">
+                    <span class="filter-trigger-label">All protocols</span>
+                  </button>
+                  <div class="filter-menu" role="listbox" aria-label="Protocol filter" data-i18n-aria-label="protocolFilter">
+                    <button class="filter-option" type="button" data-filter-kind="protocol" data-value="all" data-label-key="protocolAll" data-i18n="protocolAll">All protocols</button>
+                    <button class="filter-option" type="button" data-filter-kind="protocol" data-value="openai-compatible" data-label-key="protocolOpenAI" data-i18n="protocolOpenAI">OpenAI</button>
+                    <button class="filter-option" type="button" data-filter-kind="protocol" data-value="anthropic-compatible" data-label-key="protocolAnthropic" data-i18n="protocolAnthropic">Anthropic</button>
+                  </div>
+                </div>
               </label>
               <label class="filter-control">
                 <span class="filter-caption" data-i18n="providerTypeFilter">Provider type filter</span>
-                <select id="provider-group-filter" class="filter-select" data-i18n-aria-label="providerTypeFilter">
-                  <option value="all" data-i18n="typeTabAll">All types</option>
-                  <option value="model-provider" data-i18n="groupModelProviders">Model Providers</option>
-                  <option value="cloud-platform" data-i18n="groupCloudPlatforms">Cloud Platforms</option>
-                </select>
+                <div class="filter-dropdown" data-filter-kind="provider-group">
+                  <button id="provider-group-filter" class="filter-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" data-i18n-aria-label="providerTypeFilter">
+                    <span class="filter-trigger-label">All types</span>
+                  </button>
+                  <div class="filter-menu" role="listbox" aria-label="Provider type filter" data-i18n-aria-label="providerTypeFilter">
+                    <button class="filter-option" type="button" data-filter-kind="provider-group" data-value="all" data-label-key="typeTabAll" data-i18n="typeTabAll">All types</button>
+                    <button class="filter-option" type="button" data-filter-kind="provider-group" data-value="model-provider" data-label-key="groupModelProviders" data-i18n="groupModelProviders">Model Providers</button>
+                    <button class="filter-option" type="button" data-filter-kind="provider-group" data-value="cloud-platform" data-label-key="groupCloudPlatforms" data-i18n="groupCloudPlatforms">Cloud Platforms</button>
+                  </div>
+                </div>
               </label>
-              <button id="reset-filters" class="filter-reset" type="button" data-i18n="resetFilters">Reset</button>
+              <button id="reset-filters" class="filter-reset" type="button" aria-label="Reset filters" data-i18n-aria-label="resetFilters">
+                <svg class="filter-reset-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 6H15L11 11V16L8 18V11L4 6Z"></path>
+                  <path d="M16.5 9.5L20 13"></path>
+                  <path d="M20 9.5L16.5 13"></path>
+                </svg>
+              </button>
             </div>
+            <p id="registry-count" class="results-count" aria-live="polite">Loading providers...</p>
           </div>
-        </div>
-
-        <label class="search-label" for="search-input" data-i18n="searchLabel">Search</label>
-        <div class="search-wrapper">
-          <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input id="search-input" class="search-input" type="search" placeholder="Provider, alias, domain, or base URL" data-i18n-placeholder="searchPlaceholder" autocomplete="off">
         </div>
 
         <div class="table-wrap" role="region" aria-label="Base URL list" data-i18n-aria-label="baseUrlRegistry" tabindex="0">
           <table>
             <thead>
               <tr>
-                <th data-i18n="columnProvider">Provider</th>
+                <th aria-label="Provider" data-i18n-aria-label="columnProvider"></th>
                 <th data-i18n="columnProtocol">Protocol</th>
                 <th>Base URL</th>
                 <th data-i18n="columnNotes">Endpoint Notes</th>

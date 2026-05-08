@@ -22,7 +22,7 @@ const translations = {
     columnSource: "Source",
     columnCopy: "Copy URL",
     noMatches: "No matches.",
-    shownCount: "{shown} / {total}",
+    shownCount: "Showing {shown} of {total} endpoints",
     aliases: "Aliases",
     officialSource: "Official",
     copy: "Copy",
@@ -60,7 +60,7 @@ const translations = {
     columnSource: "来源",
     columnCopy: "复制 URL",
     noMatches: "无匹配",
-    shownCount: "{shown} / {total}",
+    shownCount: "显示 {shown} / {total} 条结果",
     aliases: "别名",
     officialSource: "官方",
     copy: "复制",
@@ -96,6 +96,8 @@ const countEl = document.querySelector("#registry-count");
 const searchEl = document.querySelector("#search-input");
 const protocolFilterEl = document.querySelector("#protocol-filter");
 const providerGroupFilterEl = document.querySelector("#provider-group-filter");
+const filterDropdowns = Array.from(document.querySelectorAll(".filter-dropdown"));
+const filterOptionButtons = Array.from(document.querySelectorAll(".filter-option"));
 const resetFiltersEl = document.querySelector("#reset-filters");
 const languageButtons = Array.from(document.querySelectorAll(".language-button"));
 
@@ -260,6 +262,7 @@ function renderRows() {
     rowsEl.append(row);
   } else {
     let activeSection = "";
+    let visibleGroupIndex = 0;
     for (const group of groups) {
       const section = providerMeta(group.provider).group;
       if (section !== activeSection) {
@@ -268,14 +271,23 @@ function renderRows() {
         sectionRow.className = "section-row";
         const sectionCell = document.createElement("td");
         sectionCell.colSpan = 7;
-        sectionCell.textContent = providerGroupLabel(section);
+        const sectionLabel = document.createElement("span");
+        sectionLabel.className = "section-label";
+        sectionLabel.textContent = providerGroupLabel(section);
+        sectionCell.append(sectionLabel);
         sectionRow.append(sectionCell);
         rowsEl.append(sectionRow);
       }
 
+      const usesAltTone = visibleGroupIndex % 2 === 1;
+      visibleGroupIndex += 1;
+
       group.records.forEach(({ provider, endpoint }, index) => {
         const row = document.createElement("tr");
         row.className = "provider-row";
+        if (usesAltTone) {
+          row.classList.add("tone-alt");
+        }
         if (index === 0) {
           row.classList.add("group-start");
         }
@@ -288,6 +300,9 @@ function renderRows() {
           const meta = providerMeta(provider);
           const providerCell = document.createElement("td");
           providerCell.className = "provider-cell";
+          if (usesAltTone) {
+            providerCell.classList.add("tone-alt");
+          }
           providerCell.rowSpan = group.records.length;
           providerCell.innerHTML = `
             <div class="provider-summary">
@@ -312,18 +327,21 @@ function renderRows() {
         }
 
         const protocolCell = document.createElement("td");
+        protocolCell.className = "protocol-cell";
         const protocolPill = document.createElement("span");
         protocolPill.className = `protocol-pill ${endpoint.protocol}`;
         protocolPill.textContent = protocolLabel(endpoint.protocol);
         protocolCell.append(protocolPill);
 
         const baseUrlCell = document.createElement("td");
+        baseUrlCell.className = "base-url-cell";
         const baseUrlText = document.createElement("span");
         baseUrlText.className = "code-text";
         baseUrlText.textContent = endpoint.baseUrl;
         baseUrlCell.append(baseUrlText);
 
         const notesCell = document.createElement("td");
+        notesCell.className = "notes-cell";
         const notesWrap = document.createElement("div");
         const notesText = document.createElement("span");
         const notesTooltip = document.createElement("span");
@@ -385,9 +403,42 @@ function renderRows() {
 }
 
 function syncFilterControls() {
-  protocolFilterEl.value = state.protocol;
-  providerGroupFilterEl.value = state.providerGroup;
+  syncDropdown("protocol", state.protocol, protocolFilterEl);
+  syncDropdown("provider-group", state.providerGroup, providerGroupFilterEl);
   resetFiltersEl.disabled = state.protocol === "all" && state.providerGroup === "all" && !state.query;
+}
+
+function syncDropdown(filterKind, value, trigger) {
+  const selectedOption = filterOptionButtons.find(
+    (button) => button.dataset.filterKind === filterKind && button.dataset.value === value
+  );
+
+  if (selectedOption) {
+    const label = t(selectedOption.dataset.labelKey || "");
+    const labelEl = trigger.querySelector(".filter-trigger-label");
+    if (labelEl) {
+      labelEl.textContent = label;
+    }
+  }
+
+  filterOptionButtons
+    .filter((button) => button.dataset.filterKind === filterKind)
+    .forEach((button) => {
+      const isSelected = button.dataset.value === value;
+      button.classList.toggle("is-selected", isSelected);
+      button.setAttribute("aria-selected", String(isSelected));
+    });
+}
+
+function closeDropdowns(activeDropdown = null) {
+  filterDropdowns.forEach((dropdown) => {
+    const isOpen = dropdown === activeDropdown;
+    dropdown.classList.toggle("is-open", isOpen);
+    const trigger = dropdown.querySelector(".filter-trigger");
+    if (trigger) {
+      trigger.setAttribute("aria-expanded", String(isOpen));
+    }
+  });
 }
 
 async function loadProviders() {
@@ -399,14 +450,41 @@ async function loadProviders() {
   renderRows();
 }
 
-protocolFilterEl.addEventListener("change", () => {
-  state.protocol = protocolFilterEl.value;
-  renderRows();
+filterDropdowns.forEach((dropdown) => {
+  const trigger = dropdown.querySelector(".filter-trigger");
+  trigger?.addEventListener("click", () => {
+    const isOpen = dropdown.classList.contains("is-open");
+    closeDropdowns(isOpen ? null : dropdown);
+  });
 });
 
-providerGroupFilterEl.addEventListener("change", () => {
-  state.providerGroup = providerGroupFilterEl.value;
-  renderRows();
+filterOptionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (button.dataset.filterKind === "provider-group") {
+      state.providerGroup = button.dataset.value || "all";
+    } else {
+      state.protocol = button.dataset.value || "all";
+    }
+
+    closeDropdowns();
+    renderRows();
+  });
+});
+
+document.addEventListener("click", (event) => {
+  if (!(event.target instanceof Node)) {
+    return;
+  }
+
+  if (!filterDropdowns.some((dropdown) => dropdown.contains(event.target))) {
+    closeDropdowns();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeDropdowns();
+  }
 });
 
 resetFiltersEl.addEventListener("click", () => {
@@ -414,6 +492,7 @@ resetFiltersEl.addEventListener("click", () => {
   state.providerGroup = "all";
   state.query = "";
   searchEl.value = "";
+  closeDropdowns();
   renderRows();
 });
 
