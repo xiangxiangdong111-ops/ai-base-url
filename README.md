@@ -14,7 +14,7 @@ A focused, machine-readable registry for AI API base URLs.
 
 AI providers expose compatible APIs through different base URLs, docs pages, regions, and naming conventions. This project gives developers one clean place to answer the practical question: what base URL should I configure for this provider and protocol?
 
-This is not an awesome list. The core asset is [data/providers.json](data/providers.json): a canonical, validated dataset designed for tooling, static sites, and pull-request review. The web UI in [docs/](docs/) is a human-friendly view over the same data.
+If you spot a missing provider, outdated information, or a better official source, open a PR and update [data/providers.json](data/providers.json). Every careful contribution helps the next developer integrate faster and avoid one more unnecessary detour.
 
 ## Data Model
 

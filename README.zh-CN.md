@@ -14,7 +14,7 @@
 
 AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路径和命名方式里。这个项目解决一个非常实际的问题：接入某个平台、某种协议时，开发者到底应该配置哪个 base URL？
 
-这不是一个 awesome-list。项目的核心资产是 [data/providers.json](data/providers.json)：一份 canonical、可校验、适合工具读取和 PR 审查的数据集。[docs/](docs/) 里的静态页面只是这份数据的人类友好视图。
+如果你发现某个平台缺失、信息过期，或能补充更准确的官方来源，欢迎直接提交 PR；更新 [data/providers.json](data/providers.json) 即可。每一次认真补充，都能帮后来的开发者更快接入、少踩一点坑。
 
 ## 数据模型
 
