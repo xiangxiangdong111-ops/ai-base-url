@@ -580,8 +580,27 @@ tbody tr:last-child td {
   transform: translateY(0);
 }
 
+.verified-cell,
+.source-cell,
+.copy-cell,
+.source-link {
+  white-space: nowrap;
+}
+
+.verified-cell {
+  width: 112px;
+}
+
+.source-cell {
+  width: 88px;
+}
+
+.copy-cell {
+  width: 116px;
+}
+
 .copy-button {
-  min-width: 124px;
+  min-width: 96px;
   padding: 0 10px;
   font-weight: 700;
   background: rgba(255, 255, 255, 0.9);

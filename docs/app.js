@@ -15,13 +15,13 @@ const translations = {
     columnNotes: "Endpoint Notes",
     columnVerified: "Verified",
     columnSource: "Source",
-    columnCopy: "Copy Base URL",
+    columnCopy: "Copy",
     noMatches: "No matches.",
     shownCount: "{shown} / {total}",
     aliases: "Aliases",
-    officialSource: "Official source",
-    copy: "Copy Base URL",
-    copied: "Base URL copied",
+    officialSource: "Official",
+    copy: "Copy URL",
+    copied: "Copied",
     failedLoad: "Failed to load provider list data",
     cannotLoadProviders: "Cannot load providers.json: {status}",
     protocolOpenAI: "OpenAI",
@@ -44,13 +44,13 @@ const translations = {
     columnNotes: "端点说明",
     columnVerified: "验证日期",
     columnSource: "来源",
-    columnCopy: "复制 BASE URL",
+    columnCopy: "复制",
     noMatches: "无匹配",
     shownCount: "{shown} / {total}",
     aliases: "别名",
-    officialSource: "官方来源",
-    copy: "复制 BASE URL",
-    copied: "已复制 BASE URL",
+    officialSource: "官方",
+    copy: "复制 URL",
+    copied: "已复制",
     failedLoad: "加载平台列表数据失败",
     cannotLoadProviders: "无法加载 providers.json：{status}",
     protocolOpenAI: "OpenAI",
@@ -254,10 +254,13 @@ function renderRows() {
         notesCell.append(notesWrap);
 
         const verifiedCell = document.createElement("td");
+        verifiedCell.className = "verified-cell";
         verifiedCell.textContent = endpoint.lastVerified;
 
         const sourceCell = document.createElement("td");
+        sourceCell.className = "source-cell";
         const sourceLink = document.createElement("a");
+        sourceLink.className = "source-link";
         sourceLink.href = endpoint.source;
         sourceLink.target = "_blank";
         sourceLink.rel = "noreferrer";
@@ -265,6 +268,7 @@ function renderRows() {
         sourceCell.append(sourceLink);
 
         const copyCell = document.createElement("td");
+        copyCell.className = "copy-cell";
         const copyButton = document.createElement("button");
         copyButton.className = "copy-button";
         copyButton.type = "button";
