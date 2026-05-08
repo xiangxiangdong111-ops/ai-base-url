@@ -42,14 +42,14 @@ AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路
 
 ## 支持的协议
 
-当前 registry 只接受：
+当前优先收录：
 
 - `openai-compatible`
 - `anthropic-compatible`
 
-这个限制是有意的。协议面越克制，数据越容易校验，也越贴近真实配置场景。
+先把这两类最常见、最能直接帮到开发者的配置整理准确，比盲目扩展范围更有价值。如果后续出现明确、稳定的真实需求，也欢迎通过 PR 一起讨论扩展。
 
-## 维护流程
+## 提交前自检
 
 ```bash
 npm run validate
@@ -57,16 +57,18 @@ npm run generate
 npm run check
 ```
 
-- `npm run validate` 校验 registry 结构、支持的协议、日期、重复身份、重复域名和重复 base URL。
-- `npm run generate` 只根据 [data/providers.json](data/providers.json) 更新 [docs/providers.json](docs/providers.json)。
-- `npm run check` 运行校验，并确认生成后的页面数据是最新的。
+- `npm run validate`：先做一轮基础检查，尽量把问题留在本地解决。
+- `npm run generate`：同步页面使用的数据文件。
+- `npm run check`：在提交前做一次完整确认，减少 review 往返。
 
-新增或修改平台时，先改 [data/providers.json](data/providers.json)。其他展示层都应该从这份文件派生。
+如果你准备提交 PR，直接更新 [data/providers.json](data/providers.json) 即可；其他展示文件会基于它同步生成。
 
 ## 贡献方式
 
-每个新增或修改的 endpoint 都必须包含官方来源 URL。新增 provider 前，请先搜索已有 provider 名称、别名、域名和 base URL。
+欢迎补充缺失平台、修正过期信息，或补上更可靠的官方来源。每一次认真补充，都会让后来者少走一点弯路。
 
-不要提交 API key、私有网关 URL、账号专属 endpoint，或复制付费文档内容。请链接到公开的官方来源。
+- 每个新增或修改的 endpoint，都请附上公开可访问的官方来源。
+- 新增 provider 前，先搜索已有 provider 名称、别名、域名和 base URL，避免重复提交。
+- 不要提交 API key、私有网关 URL、账号专属 endpoint，或复制受限文档内容。
 
-本 registry 是社区索引，最终请始终以链接到的官方文档为准。
+这个 registry 的目标不是收得越多越好，而是尽可能让人拿来就能用、用得放心。若信息仍有不确定之处，也欢迎先提 PR 或 issue 一起讨论。

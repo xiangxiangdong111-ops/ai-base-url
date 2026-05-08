@@ -42,14 +42,14 @@ Each provider has one canonical `id`, optional `aliases`, one or more `domains`,
 
 ## Supported Protocols
 
-The registry currently accepts only:
+The current focus is:
 
 - `openai-compatible`
 - `anthropic-compatible`
 
-That constraint is intentional. A narrow protocol surface keeps the registry easy to validate and useful for real configuration workflows.
+Getting these two common integration paths right is more useful than expanding the scope too quickly. If a new protocol has a clear, stable real-world need, a PR is a good place to discuss it.
 
-## Maintenance Flow
+## Before You Open a PR
 
 ```bash
 npm run validate
@@ -57,16 +57,18 @@ npm run generate
 npm run check
 ```
 
-- `npm run validate` checks registry shape, supported protocols, dates, duplicate identities, duplicate domains, and duplicate base URLs.
-- `npm run generate` updates only [docs/providers.json](docs/providers.json) from [data/providers.json](data/providers.json).
-- `npm run check` runs validation and confirms the generated docs data is current.
+- `npm run validate`: run a quick local sanity check first.
+- `npm run generate`: sync the data used by the site.
+- `npm run check`: do one final pass before you open the PR.
 
-When adding or changing a provider, edit [data/providers.json](data/providers.json) first. Everything else should follow from that file.
+If you are adding or updating a provider, edit [data/providers.json](data/providers.json). The rest of the generated files should follow from there.
 
 ## Contributing
 
-Every new or changed endpoint must include an official source URL. Before adding a provider, search existing provider names, aliases, domains, and base URLs.
+Missing providers, outdated entries, and better official sources are all valuable contributions. Every careful PR makes this registry more useful for the next developer.
 
-Do not include API keys, private gateway URLs, account-specific endpoints, or copied paid documentation. Link to public official sources instead.
+- Every new or changed endpoint should include a public official source URL.
+- Before adding a provider, search existing names, aliases, domains, and base URLs to avoid duplicates.
+- Do not include API keys, private gateway URLs, account-specific endpoints, or copied restricted documentation.
 
-This registry is a community index. The linked official documentation remains the final source of truth.
+The goal is not to collect the most entries. The goal is to keep the list trustworthy and directly useful. If something is still uncertain, opening a PR or issue for discussion is already a helpful contribution.
