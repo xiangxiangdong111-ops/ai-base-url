@@ -12,13 +12,14 @@ const translations = {
     baseUrlRegistry: "Base URL list",
     columnProvider: "Provider",
     columnProtocol: "Protocol",
+    columnNotes: "Endpoint Notes",
     columnVerified: "Verified",
     columnSource: "Source",
     columnCopy: "Copy",
     noMatches: "No matches.",
     shownCount: "{shown} / {total}",
     aliases: "Aliases",
-    docs: "docs",
+    officialSource: "Official source",
     copy: "Copy",
     copied: "Copied",
     failedLoad: "Failed to load provider list data",
@@ -40,13 +41,14 @@ const translations = {
     baseUrlRegistry: "Base URL 列表",
     columnProvider: "平台",
     columnProtocol: "协议",
+    columnNotes: "端点说明",
     columnVerified: "验证日期",
     columnSource: "来源",
     columnCopy: "复制",
     noMatches: "无匹配",
     shownCount: "{shown} / {total}",
     aliases: "别名",
-    docs: "文档",
+    officialSource: "官方来源",
     copy: "复制",
     copied: "已复制",
     failedLoad: "加载平台列表数据失败",
@@ -158,7 +160,7 @@ function applyTranslations() {
   });
 
   if (state.loadError) {
-    rowsEl.innerHTML = `<tr><td class="empty-row" colspan="6">${state.loadError}</td></tr>`;
+    rowsEl.innerHTML = `<tr><td class="empty-row" colspan="7">${state.loadError}</td></tr>`;
     countEl.textContent = t("failedLoad");
     return;
   }
@@ -176,7 +178,7 @@ function renderRows() {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.className = "empty-row";
-    cell.colSpan = 6;
+    cell.colSpan = 7;
     cell.textContent = t("noMatches");
     row.append(cell);
     rowsEl.append(row);
@@ -226,6 +228,12 @@ function renderRows() {
         baseUrlText.textContent = endpoint.baseUrl;
         baseUrlCell.append(baseUrlText);
 
+        const notesCell = document.createElement("td");
+        const notesText = document.createElement("span");
+        notesText.className = "note-text";
+        notesText.textContent = endpoint.notes || "-";
+        notesCell.append(notesText);
+
         const verifiedCell = document.createElement("td");
         verifiedCell.textContent = endpoint.lastVerified;
 
@@ -234,7 +242,7 @@ function renderRows() {
         sourceLink.href = endpoint.source;
         sourceLink.target = "_blank";
         sourceLink.rel = "noreferrer";
-        sourceLink.textContent = t("docs");
+        sourceLink.textContent = t("officialSource");
         sourceCell.append(sourceLink);
 
         const copyCell = document.createElement("td");
@@ -251,7 +259,7 @@ function renderRows() {
         });
         copyCell.append(copyButton);
 
-        row.append(protocolCell, baseUrlCell, verifiedCell, sourceCell, copyCell);
+        row.append(protocolCell, baseUrlCell, notesCell, verifiedCell, sourceCell, copyCell);
         rowsEl.append(row);
       });
     }
@@ -297,6 +305,6 @@ applyTranslations();
 
 loadProviders().catch((error) => {
   state.loadError = error.message;
-  rowsEl.innerHTML = `<tr><td class="empty-row" colspan="6">${error.message}</td></tr>`;
+  rowsEl.innerHTML = `<tr><td class="empty-row" colspan="7">${error.message}</td></tr>`;
   countEl.textContent = t("failedLoad");
 });
