@@ -255,7 +255,7 @@
     "name": "Xiaomi MiMo",
     "aliases": ["xiaomi-mimo", "xiaomi mimo", "mimo", "xiaomimimo"],
     "website": "https://platform.xiaomimimo.com",
-    "domains": ["xiaomimimo.com", "platform.xiaomimimo.com", "api.xiaomimimo.com", "token-plan-cn.xiaomimimo.com"],
+    "domains": ["xiaomimimo.com", "platform.xiaomimimo.com", "api.xiaomimimo.com", "token-plan-cn.xiaomimimo.com", "token-plan-sgp.xiaomimimo.com", "token-plan-ams.xiaomimimo.com"],
     "endpoints": [
       {
         "id": "xiaomimimo-token-plan-cn-openai",
@@ -272,6 +272,38 @@
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
         "notes": "Official Token Plan subscription docs list the China cluster Anthropic-compatible Base URL as https://token-plan-cn.xiaomimimo.com/anthropic for coding-tool subscriptions; the standard public API docs separately use api.xiaomimimo.com/anthropic/v1/messages for regular API traffic."
+      },
+      {
+        "id": "xiaomimimo-token-plan-sgp-openai",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://token-plan-sgp.xiaomimimo.com/v1",
+        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
+        "lastVerified": "2026-05-08",
+        "notes": "Official Token Plan subscription docs list the Singapore cluster OpenAI-compatible Base URL as https://token-plan-sgp.xiaomimimo.com/v1 for coding-tool subscriptions."
+      },
+      {
+        "id": "xiaomimimo-token-plan-sgp-anthropic",
+        "protocol": "anthropic-compatible",
+        "baseUrl": "https://token-plan-sgp.xiaomimimo.com/anthropic",
+        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
+        "lastVerified": "2026-05-08",
+        "notes": "Official Token Plan subscription docs list the Singapore cluster Anthropic-compatible Base URL as https://token-plan-sgp.xiaomimimo.com/anthropic for coding-tool subscriptions."
+      },
+      {
+        "id": "xiaomimimo-token-plan-ams-openai",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://token-plan-ams.xiaomimimo.com/v1",
+        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
+        "lastVerified": "2026-05-08",
+        "notes": "Official Token Plan subscription docs list the Europe cluster OpenAI-compatible Base URL as https://token-plan-ams.xiaomimimo.com/v1 for coding-tool subscriptions."
+      },
+      {
+        "id": "xiaomimimo-token-plan-ams-anthropic",
+        "protocol": "anthropic-compatible",
+        "baseUrl": "https://token-plan-ams.xiaomimimo.com/anthropic",
+        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
+        "lastVerified": "2026-05-08",
+        "notes": "Official Token Plan subscription docs list the Europe cluster Anthropic-compatible Base URL as https://token-plan-ams.xiaomimimo.com/anthropic for coding-tool subscriptions."
       }
     ]
   }
