@@ -83,7 +83,7 @@
   {
     "id": "zhipu-ai",
     "name": "Zhipu AI",
-    "aliases": ["zhipu", "bigmodel", "glm", "智谱", "智谱AI"],
+    "aliases": ["zhipu", "bigmodel", "glm", "z.ai", "z ai", "z-ai", "智谱", "智谱AI"],
     "website": "https://open.bigmodel.cn",
     "domains": ["bigmodel.cn", "open.bigmodel.cn"],
     "endpoints": [
@@ -120,26 +120,8 @@
         "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
         "lastVerified": "2026-05-07",
-        "notes": "DashScope Beijing region OpenAI-compatible endpoint.",
-        "notesZh": "DashScope 北京地域 OpenAI 兼容端点。"
-      },
-      {
-        "id": "dashscope-openai-compatible-us",
-        "protocol": "openai-compatible",
-        "baseUrl": "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
-        "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
-        "lastVerified": "2026-05-07",
-        "notes": "DashScope US region OpenAI-compatible endpoint.",
-        "notesZh": "DashScope 美国地域 OpenAI 兼容端点。"
-      },
-      {
-        "id": "dashscope-openai-compatible-intl",
-        "protocol": "openai-compatible",
-        "baseUrl": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
-        "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
-        "lastVerified": "2026-05-07",
-        "notes": "DashScope Singapore region OpenAI-compatible endpoint.",
-        "notesZh": "DashScope 新加坡地域 OpenAI 兼容端点。"
+        "notes": "DashScope regional OpenAI-compatible endpoint family. Use dashscope.aliyuncs.com for Beijing, dashscope-us.aliyuncs.com for the US region, and dashscope-intl.aliyuncs.com for the Singapore region.",
+        "notesZh": "DashScope 区域化 OpenAI 兼容端点族。北京地域使用 dashscope.aliyuncs.com，美国地域使用 dashscope-us.aliyuncs.com，新加坡地域使用 dashscope-intl.aliyuncs.com。"
       }
     ]
   },
@@ -300,8 +282,8 @@
         "baseUrl": "https://token-plan-cn.xiaomimimo.com/v1",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "MiMo Token Plan China cluster for coding-tool OpenAI-compatible access.",
-        "notesZh": "MiMo Token Plan 中国区集群，用于 coding-tool 的 OpenAI 兼容访问。"
+        "notes": "MiMo Token Plan regional OpenAI-compatible cluster for coding-tool access. Available clusters: China token-plan-cn.xiaomimimo.com, Singapore token-plan-sgp.xiaomimimo.com, and Europe token-plan-ams.xiaomimimo.com.",
+        "notesZh": "MiMo Token Plan 面向 coding-tool 的区域化 OpenAI 兼容集群。当前提供中国区 token-plan-cn.xiaomimimo.com、新加坡区 token-plan-sgp.xiaomimimo.com、欧洲区 token-plan-ams.xiaomimimo.com。"
       },
       {
         "id": "xiaomimimo-token-plan-cn-anthropic",
@@ -309,44 +291,116 @@
         "baseUrl": "https://token-plan-cn.xiaomimimo.com/anthropic",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "MiMo Token Plan China cluster for coding-tool Anthropic-compatible access.",
-        "notesZh": "MiMo Token Plan 中国区集群，用于 coding-tool 的 Anthropic 兼容访问。"
-      },
+        "notes": "MiMo Token Plan regional Anthropic-compatible cluster for coding-tool access. Available clusters: China token-plan-cn.xiaomimimo.com, Singapore token-plan-sgp.xiaomimimo.com, and Europe token-plan-ams.xiaomimimo.com.",
+        "notesZh": "MiMo Token Plan 面向 coding-tool 的区域化 Anthropic 兼容集群。当前提供中国区 token-plan-cn.xiaomimimo.com、新加坡区 token-plan-sgp.xiaomimimo.com、欧洲区 token-plan-ams.xiaomimimo.com。"
+      }
+    ]
+  },
+  {
+    "id": "google",
+    "name": "Google",
+    "aliases": ["google-ai", "google ai", "gemini", "google gemini"],
+    "website": "https://ai.google.dev",
+    "domains": ["ai.google.dev", "generativelanguage.googleapis.com"],
+    "endpoints": [
       {
-        "id": "xiaomimimo-token-plan-sgp-openai",
+        "id": "google-openai",
         "protocol": "openai-compatible",
-        "baseUrl": "https://token-plan-sgp.xiaomimimo.com/v1",
-        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
+        "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai/",
+        "source": "https://ai.google.dev/gemini-api/docs/openai",
         "lastVerified": "2026-05-08",
-        "notes": "MiMo Token Plan Singapore cluster for coding-tool OpenAI-compatible access.",
-        "notesZh": "MiMo Token Plan 新加坡区集群，用于 coding-tool 的 OpenAI 兼容访问。"
-      },
+        "notes": "Gemini API OpenAI compatibility root; official examples use this exact base_url.",
+        "notesZh": "Gemini API 的 OpenAI 兼容根路径；官方示例直接使用这个 base_url。"
+      }
+    ]
+  },
+  {
+    "id": "tencent",
+    "name": "Tencent Hunyuan",
+    "aliases": ["tencent-ai", "tencent ai", "hunyuan", "腾讯混元", "混元"],
+    "website": "https://cloud.tencent.com/document/product/1729",
+    "domains": ["cloud.tencent.com", "hunyuan.cloud.tencent.com", "api.hunyuan.cloud.tencent.com"],
+    "endpoints": [
       {
-        "id": "xiaomimimo-token-plan-sgp-anthropic",
-        "protocol": "anthropic-compatible",
-        "baseUrl": "https://token-plan-sgp.xiaomimimo.com/anthropic",
-        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
-        "lastVerified": "2026-05-08",
-        "notes": "MiMo Token Plan Singapore cluster for coding-tool Anthropic-compatible access.",
-        "notesZh": "MiMo Token Plan 新加坡区集群，用于 coding-tool 的 Anthropic 兼容访问。"
-      },
-      {
-        "id": "xiaomimimo-token-plan-ams-openai",
+        "id": "tencent-openai",
         "protocol": "openai-compatible",
-        "baseUrl": "https://token-plan-ams.xiaomimimo.com/v1",
-        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
+        "baseUrl": "https://api.hunyuan.cloud.tencent.com/v1",
+        "source": "https://cloud.tencent.com/document/product/1729/111007",
         "lastVerified": "2026-05-08",
-        "notes": "MiMo Token Plan Europe cluster for coding-tool OpenAI-compatible access.",
-        "notesZh": "MiMo Token Plan 欧洲区集群，用于 coding-tool 的 OpenAI 兼容访问。"
+        "notes": "Hunyuan OpenAI-compatible endpoint for chat and embeddings.",
+        "notesZh": "混元 OpenAI 兼容端点，支持聊天与向量接口。"
       },
       {
-        "id": "xiaomimimo-token-plan-ams-anthropic",
+        "id": "tencent-anthropic",
         "protocol": "anthropic-compatible",
-        "baseUrl": "https://token-plan-ams.xiaomimimo.com/anthropic",
-        "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
+        "baseUrl": "https://api.hunyuan.cloud.tencent.com/anthropic",
+        "source": "https://cloud.tencent.com/document/product/1729/127293",
         "lastVerified": "2026-05-08",
-        "notes": "MiMo Token Plan Europe cluster for coding-tool Anthropic-compatible access.",
-        "notesZh": "MiMo Token Plan 欧洲区集群，用于 coding-tool 的 Anthropic 兼容访问。"
+        "notes": "Hunyuan Anthropic-compatible root for Claude-style Messages clients.",
+        "notesZh": "混元 Anthropic 兼容根路径，用于 Claude 风格的 Messages 客户端。"
+      }
+    ]
+  },
+  {
+    "id": "xai",
+    "name": "xAI",
+    "aliases": ["x-ai", "x ai", "grok"],
+    "website": "https://x.ai",
+    "domains": ["x.ai", "api.x.ai"],
+    "endpoints": [
+      {
+        "id": "xai-openai",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://api.x.ai/v1",
+        "source": "https://api.x.ai/docs",
+        "lastVerified": "2026-05-08",
+        "notes": "xAI unified REST root exposing OpenAI-style chat/completions endpoints in the official API docs.",
+        "notesZh": "xAI 官方统一 REST 根路径，文档中提供 OpenAI 风格的 chat/completions 接口。"
+      },
+      {
+        "id": "xai-anthropic",
+        "protocol": "anthropic-compatible",
+        "baseUrl": "https://api.x.ai",
+        "source": "https://api.x.ai/docs",
+        "lastVerified": "2026-05-08",
+        "notes": "xAI Anthropic-compatible root derived from the official /v1/messages endpoint.",
+        "notesZh": "xAI Anthropic 兼容根路径，由官方 /v1/messages 端点推导。"
+      }
+    ]
+  },
+  {
+    "id": "bytedance",
+    "name": "Volcengine Ark",
+    "aliases": ["bytedance", "byte-dance", "volcengine", "volcengine ark", "doubao", "字节跳动", "火山引擎", "火山方舟", "豆包"],
+    "website": "https://www.volcengine.com/product/ark",
+    "domains": ["volcengine.com", "console.volcengine.com", "ark.cn-beijing.volces.com"],
+    "endpoints": [
+      {
+        "id": "bytedance-openai",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://ark.cn-beijing.volces.com/api/v3",
+        "source": "https://www.volcengine.com/docs/82379/1330626",
+        "lastVerified": "2026-05-08",
+        "notes": "Volcengine Ark data-plane root for official OpenAI SDK compatibility and Chat/Responses API calls.",
+        "notesZh": "火山方舟数据面根路径，官方兼容 OpenAI SDK，并用于 Chat 与 Responses API 调用。"
+      }
+    ]
+  },
+  {
+    "id": "amazon-bedrock",
+    "name": "Amazon Bedrock",
+    "aliases": ["aws-bedrock", "aws bedrock", "bedrock", "amazon bedrock"],
+    "website": "https://aws.amazon.com/bedrock",
+    "domains": ["aws.amazon.com", "docs.aws.amazon.com", "bedrock-runtime.us-east-1.amazonaws.com"],
+    "endpoints": [
+      {
+        "id": "amazon-bedrock-openai",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://bedrock-runtime.us-east-1.amazonaws.com/openai/v1",
+        "source": "https://docs.aws.amazon.com/bedrock/latest/userguide/inference-chat-completions.html",
+        "lastVerified": "2026-05-08",
+        "notes": "AWS Region-specific OpenAI-compatible Bedrock Runtime endpoint; replace us-east-1 with a supported Region code when needed. Core Bedrock service Regions: Americas: us-east-1, us-east-2, us-west-2, ca-central-1, ca-west-1, mx-central-1, sa-east-1. Europe: eu-central-1, eu-central-2, eu-west-1, eu-west-2, eu-west-3, eu-north-1, eu-south-1, eu-south-2. Asia Pacific: ap-northeast-1, ap-northeast-2, ap-northeast-3, ap-south-1, ap-south-2, ap-southeast-1, ap-southeast-2.",
+        "notesZh": "AWS Bedrock Runtime 的 OpenAI 兼容区域化端点；需要时可将主机名中的 us-east-1 替换为受支持的 Region 代码。当前按核心服务地区收录：美洲：us-east-1、us-east-2、us-west-2、ca-central-1、ca-west-1、mx-central-1、sa-east-1。欧洲：eu-central-1、eu-central-2、eu-west-1、eu-west-2、eu-west-3、eu-north-1、eu-south-1、eu-south-2。亚太：ap-northeast-1、ap-northeast-2、ap-northeast-3、ap-south-1、ap-south-2、ap-southeast-1、ap-southeast-2。"
       }
     ]
   }
