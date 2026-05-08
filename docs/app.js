@@ -26,7 +26,11 @@ const translations = {
     cannotLoadProviders: "Cannot load providers.json: {status}",
     protocolOpenAI: "OpenAI",
     protocolAnthropic: "Anthropic",
-    endpointCount: "{count} endpoints"
+    endpointCount: "{count} endpoints",
+    groupModelProviders: "Model Providers",
+    groupCloudPlatforms: "Cloud Platforms",
+    providerTypeModelProvider: "Model API",
+    providerTypeCloudPlatform: "Cloud"
   },
   "zh-CN": {
     documentTitle: "AI Base URL 列表",
@@ -55,7 +59,11 @@ const translations = {
     cannotLoadProviders: "无法加载 providers.json：{status}",
     protocolOpenAI: "OpenAI",
     protocolAnthropic: "Anthropic",
-    endpointCount: "{count} 条 endpoint"
+    endpointCount: "{count} 条 endpoint",
+    groupModelProviders: "模型厂商",
+    groupCloudPlatforms: "云平台",
+    providerTypeModelProvider: "模型 API",
+    providerTypeCloudPlatform: "云平台"
   }
 };
 
@@ -65,6 +73,31 @@ const state = {
   query: "",
   locale: initialLocale(),
   loadError: null
+};
+
+const providerMetaById = {
+  openai: { group: "model-provider", popularity: 1 },
+  anthropic: { group: "model-provider", popularity: 2 },
+  google: { group: "model-provider", popularity: 3 },
+  deepseek: { group: "model-provider", popularity: 4 },
+  xai: { group: "model-provider", popularity: 5 },
+  "zhipu-ai": { group: "model-provider", popularity: 6 },
+  tencent: { group: "model-provider", popularity: 7 },
+  moonshot: { group: "model-provider", popularity: 8 },
+  bytedance: { group: "model-provider", popularity: 9 },
+  minimax: { group: "model-provider", popularity: 10 },
+  xiaomimimo: { group: "model-provider", popularity: 11 },
+  openrouter: { group: "cloud-platform", popularity: 1 },
+  "amazon-bedrock": { group: "cloud-platform", popularity: 2 },
+  dashscope: { group: "cloud-platform", popularity: 3 },
+  siliconflow: { group: "cloud-platform", popularity: 4 },
+  groq: { group: "cloud-platform", popularity: 5 },
+  "together-ai": { group: "cloud-platform", popularity: 6 }
+};
+
+const providerGroupOrder = {
+  "model-provider": 0,
+  "cloud-platform": 1
 };
 
 const rowsEl = document.querySelector("#provider-rows");
@@ -87,6 +120,40 @@ function t(key, values = {}) {
   return String(value).replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
 }
 
+function providerMeta(provider) {
+  return providerMetaById[provider.id] || { group: "model-provider", popularity: 999 };
+}
+
+function compareProviders(left, right) {
+  const leftMeta = providerMeta(left);
+  const rightMeta = providerMeta(right);
+  const groupDelta = (providerGroupOrder[leftMeta.group] ?? 99) - (providerGroupOrder[rightMeta.group] ?? 99);
+  if (groupDelta !== 0) {
+    return groupDelta;
+  }
+
+  const popularityDelta = leftMeta.popularity - rightMeta.popularity;
+  if (popularityDelta !== 0) {
+    return popularityDelta;
+  }
+
+  return left.name.localeCompare(right.name, "en", { sensitivity: "base" });
+}
+
+function providerGroupLabel(group) {
+  if (group === "cloud-platform") {
+    return t("groupCloudPlatforms");
+  }
+  return t("groupModelProviders");
+}
+
+function providerTypeLabel(group) {
+  if (group === "cloud-platform") {
+    return t("providerTypeCloudPlatform");
+  }
+  return t("providerTypeModelProvider");
+}
+
 function endpointRecords() {
   return state.providers.flatMap((provider) =>
     (provider.endpoints || []).map((endpoint) => ({ provider, endpoint }))
@@ -94,9 +161,12 @@ function endpointRecords() {
 }
 
 function providerSearchText(provider, endpoint) {
+  const meta = providerMeta(provider);
   return [
     provider.id,
     provider.name,
+    providerGroupLabel(meta.group),
+    providerTypeLabel(meta.group),
     ...(provider.aliases || []),
     ...(provider.domains || []),
     provider.website,
@@ -190,7 +260,20 @@ function renderRows() {
     row.append(cell);
     rowsEl.append(row);
   } else {
+    let activeSection = "";
     for (const group of groups) {
+      const section = providerMeta(group.provider).group;
+      if (section !== activeSection) {
+        activeSection = section;
+        const sectionRow = document.createElement("tr");
+        sectionRow.className = "section-row";
+        const sectionCell = document.createElement("td");
+        sectionCell.colSpan = 7;
+        sectionCell.textContent = providerGroupLabel(section);
+        sectionRow.append(sectionCell);
+        rowsEl.append(sectionRow);
+      }
+
       group.records.forEach(({ provider, endpoint }, index) => {
         const row = document.createElement("tr");
         row.className = "provider-row";
@@ -203,19 +286,25 @@ function renderRows() {
 
         if (index === 0) {
           const aliases = provider.aliases?.length ? provider.aliases.slice(0, 4).join(", ") : "";
+          const meta = providerMeta(provider);
           const providerCell = document.createElement("td");
           providerCell.className = "provider-cell";
           providerCell.rowSpan = group.records.length;
           providerCell.innerHTML = `
             <div class="provider-summary">
               <div>
-                <span class="provider-name"></span>
+                <div class="provider-heading">
+                  <span class="provider-name"></span>
+                  <span class="provider-badge"></span>
+                </div>
                 <span class="aliases"></span>
               </div>
               <span class="provider-count"></span>
             </div>
           `;
           providerCell.querySelector(".provider-name").textContent = provider.name;
+          providerCell.querySelector(".provider-badge").textContent = providerTypeLabel(meta.group);
+          providerCell.querySelector(".provider-badge").classList.add(`is-${meta.group}`);
           providerCell.querySelector(".aliases").textContent = aliases ? `${t("aliases")}: ${aliases}` : "";
           providerCell.querySelector(".provider-count").textContent = t("endpointCount", {
             count: group.records.length
@@ -299,7 +388,7 @@ async function loadProviders() {
   if (!response.ok) {
     throw new Error(t("cannotLoadProviders", { status: response.status }));
   }
-  state.providers = await response.json();
+  state.providers = (await response.json()).slice().sort(compareProviders);
   renderRows();
 }
 

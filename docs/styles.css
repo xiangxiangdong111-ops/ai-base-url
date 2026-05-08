@@ -432,6 +432,21 @@ tbody tr:hover {
   background: rgba(244, 249, 251, 0.88);
 }
 
+tbody tr.section-row:hover {
+  background: transparent;
+}
+
+.section-row td {
+  padding: 14px 12px 8px;
+  border-bottom: 0;
+  background: transparent;
+  color: var(--accent-strong);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 tbody tr.group-start td {
   border-top: 1px solid rgba(70, 101, 124, 0.18);
 }
@@ -476,6 +491,13 @@ tbody tr:last-child td {
   padding: 14px 14px 14px 18px;
 }
 
+.provider-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
 .provider-count {
   display: inline-flex;
   align-items: center;
@@ -497,6 +519,33 @@ tbody tr:last-child td {
   font-size: 1.02rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
+}
+
+.provider-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(53, 101, 126, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  color: #33596d;
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.provider-badge.is-cloud-platform {
+  border-color: rgba(18, 107, 132, 0.18);
+  background: linear-gradient(180deg, rgba(231, 246, 249, 0.96), rgba(219, 238, 243, 0.9));
+  color: #0b617b;
+}
+
+.provider-badge.is-model-provider {
+  border-color: rgba(169, 117, 42, 0.18);
+  background: linear-gradient(180deg, rgba(252, 247, 237, 0.96), rgba(248, 239, 223, 0.92));
+  color: #7b5113;
 }
 
 .aliases {
@@ -630,6 +679,10 @@ tbody tr:last-child td {
 @media (max-width: 700px) {
   .provider-summary {
     flex-direction: column;
+  }
+
+  .provider-heading {
+    gap: 6px;
   }
 
   .provider-count {
