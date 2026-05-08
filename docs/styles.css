@@ -237,7 +237,7 @@ h2 {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(248, 250, 252, 0.74));
   box-shadow: var(--shadow);
   backdrop-filter: blur(20px);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .registry-panel::before {
