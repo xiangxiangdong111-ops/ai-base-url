@@ -141,6 +141,13 @@ function protocolLabel(protocol) {
   return protocol;
 }
 
+function endpointNote(endpoint) {
+  if (state.locale === "zh-CN") {
+    return endpoint.notesZh || endpoint.notes || "-";
+  }
+  return endpoint.notes || endpoint.notesZh || "-";
+}
+
 function applyTranslations() {
   document.documentElement.lang = state.locale;
   document.title = t("documentTitle");
@@ -229,10 +236,22 @@ function renderRows() {
         baseUrlCell.append(baseUrlText);
 
         const notesCell = document.createElement("td");
+        const notesWrap = document.createElement("div");
         const notesText = document.createElement("span");
+        const notesTooltip = document.createElement("span");
+        const fullNote = endpointNote(endpoint);
+        notesWrap.className = "note-wrap";
+        notesWrap.tabIndex = 0;
         notesText.className = "note-text";
-        notesText.textContent = endpoint.notes || "-";
-        notesCell.append(notesText);
+        notesTooltip.className = "note-tooltip";
+        notesText.textContent = fullNote;
+        notesTooltip.textContent = fullNote;
+        notesWrap.addEventListener("mouseenter", () => notesWrap.classList.add("is-active"));
+        notesWrap.addEventListener("mouseleave", () => notesWrap.classList.remove("is-active"));
+        notesWrap.addEventListener("focus", () => notesWrap.classList.add("is-active"));
+        notesWrap.addEventListener("blur", () => notesWrap.classList.remove("is-active"));
+        notesWrap.append(notesText, notesTooltip);
+        notesCell.append(notesWrap);
 
         const verifiedCell = document.createElement("td");
         verifiedCell.textContent = endpoint.lastVerified;

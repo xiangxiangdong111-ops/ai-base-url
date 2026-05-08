@@ -12,7 +12,8 @@
         "baseUrl": "https://api.openai.com/v1",
         "source": "https://developers.openai.com/api/docs/api-reference/authentication",
         "lastVerified": "2026-05-07",
-        "notes": "Official API reference shows curl requests to https://api.openai.com/v1/models and https://api.openai.com/v1/chat/completions."
+        "notes": "Standard OpenAI REST API root.",
+        "notesZh": "OpenAI 标准 REST API 根路径。"
       }
     ]
   },
@@ -29,7 +30,8 @@
         "baseUrl": "https://api.anthropic.com",
         "source": "https://platform.claude.com/docs/en/api/getting-started",
         "lastVerified": "2026-05-07",
-        "notes": "Official API overview states that the Claude API is a RESTful API at https://api.anthropic.com."
+        "notes": "Standard Claude Messages API root.",
+        "notesZh": "Claude 标准 Messages API 根路径。"
       }
     ]
   },
@@ -46,7 +48,8 @@
         "baseUrl": "https://api.deepseek.com",
         "source": "https://api-docs.deepseek.com/",
         "lastVerified": "2026-05-07",
-        "notes": "Official docs list base_url=https://api.deepseek.com for OpenAI-compatible calls."
+        "notes": "DeepSeek general OpenAI-compatible endpoint.",
+        "notesZh": "DeepSeek 通用 OpenAI 兼容端点。"
       },
       {
         "id": "deepseek-anthropic",
@@ -54,7 +57,8 @@
         "baseUrl": "https://api.deepseek.com/anthropic",
         "source": "https://api-docs.deepseek.com/guides/anthropic_api",
         "lastVerified": "2026-05-07",
-        "notes": "Official Anthropic API guide states that DeepSeek supports the Anthropic API format with base_url https://api.deepseek.com/anthropic."
+        "notes": "DeepSeek Anthropic-compatible endpoint.",
+        "notesZh": "DeepSeek Anthropic 兼容端点。"
       }
     ]
   },
@@ -71,7 +75,8 @@
         "baseUrl": "https://api.moonshot.cn/v1",
         "source": "https://platform.kimi.com/docs/guide/start-using-kimi-api",
         "lastVerified": "2026-05-07",
-        "notes": "Official Kimi quickstart configures OpenAI(..., base_url=\"https://api.moonshot.cn/v1\")."
+        "notes": "Kimi public OpenAI-compatible endpoint.",
+        "notesZh": "Kimi 公共 OpenAI 兼容端点。"
       }
     ]
   },
@@ -88,7 +93,8 @@
         "baseUrl": "https://open.bigmodel.cn/api/paas/v4",
         "source": "https://docs.bigmodel.cn/cn/guide/start/quick-start",
         "lastVerified": "2026-05-07",
-        "notes": "Official quickstart posts to https://open.bigmodel.cn/api/paas/v4/chat/completions and distinguishes a separate coding-only endpoint."
+        "notes": "Zhipu public OpenAI-compatible endpoint; separate coding-only access exists.",
+        "notesZh": "智谱公共 OpenAI 兼容端点；另有独立的 coding 专用入口。"
       },
       {
         "id": "zhipu-anthropic",
@@ -96,7 +102,8 @@
         "baseUrl": "https://open.bigmodel.cn/api/anthropic",
         "source": "https://docs.bigmodel.cn/cn/guide/develop/claude/introduction",
         "lastVerified": "2026-05-07",
-        "notes": "Official Claude API compatibility docs tell users to replace base_url with https://open.bigmodel.cn/api/anthropic and show curl requests to /api/anthropic/v1/messages."
+        "notes": "Zhipu Claude-compatible endpoint.",
+        "notesZh": "智谱 Claude 兼容端点。"
       }
     ]
   },
@@ -113,7 +120,8 @@
         "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
         "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
         "lastVerified": "2026-05-07",
-        "notes": "Official compatibility docs list the Beijing region BASE_URL as https://dashscope.aliyuncs.com/compatible-mode/v1."
+        "notes": "DashScope Beijing region OpenAI-compatible endpoint.",
+        "notesZh": "DashScope 北京地域 OpenAI 兼容端点。"
       },
       {
         "id": "dashscope-openai-compatible-us",
@@ -121,7 +129,8 @@
         "baseUrl": "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
         "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
         "lastVerified": "2026-05-07",
-        "notes": "Official compatibility docs list the US region BASE_URL as https://dashscope-us.aliyuncs.com/compatible-mode/v1."
+        "notes": "DashScope US region OpenAI-compatible endpoint.",
+        "notesZh": "DashScope 美国地域 OpenAI 兼容端点。"
       },
       {
         "id": "dashscope-openai-compatible-intl",
@@ -129,7 +138,8 @@
         "baseUrl": "https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
         "source": "https://help.aliyun.com/zh/model-studio/compatibility-of-openai-with-dashscope",
         "lastVerified": "2026-05-07",
-        "notes": "Official compatibility docs list the Singapore region BASE_URL as https://dashscope-intl.aliyuncs.com/compatible-mode/v1."
+        "notes": "DashScope Singapore region OpenAI-compatible endpoint.",
+        "notesZh": "DashScope 新加坡地域 OpenAI 兼容端点。"
       }
     ]
   },
@@ -146,7 +156,8 @@
         "baseUrl": "https://api.siliconflow.cn/v1",
         "source": "https://docs.siliconflow.cn/cn/userguide/quickstart",
         "lastVerified": "2026-05-07",
-        "notes": "Official quickstart shows base_url=\"https://api.siliconflow.cn/v1\" in the OpenAI client example."
+        "notes": "SiliconFlow OpenAI-compatible endpoint.",
+        "notesZh": "SiliconFlow OpenAI 兼容端点。"
       },
       {
         "id": "siliconflow-anthropic",
@@ -154,7 +165,8 @@
         "baseUrl": "https://api.siliconflow.cn",
         "source": "https://docs.siliconflow.cn/cn/api-reference/chat-completions/messages",
         "lastVerified": "2026-05-07",
-        "notes": "Official Anthropic API reference exposes POST https://api.siliconflow.cn/v1/messages; this maps to the Anthropic-compatible service root https://api.siliconflow.cn."
+        "notes": "SiliconFlow Anthropic-compatible root derived from the official Messages endpoint.",
+        "notesZh": "SiliconFlow Anthropic 兼容根路径，由官方 Messages 端点推导。"
       }
     ]
   },
@@ -171,7 +183,8 @@
         "baseUrl": "https://openrouter.ai/api/v1",
         "source": "https://openrouter.ai/docs/quickstart",
         "lastVerified": "2026-05-07",
-        "notes": "Official quickstart sets baseURL to https://openrouter.ai/api/v1 and sends requests to /chat/completions there."
+        "notes": "OpenRouter OpenAI-compatible router endpoint.",
+        "notesZh": "OpenRouter 的 OpenAI 兼容路由端点。"
       }
     ]
   },
@@ -188,7 +201,8 @@
         "baseUrl": "https://api.groq.com/openai/v1",
         "source": "https://console.groq.com/docs/openai",
         "lastVerified": "2026-05-07",
-        "notes": "Official OpenAI-compatibility docs set base_url=\"https://api.groq.com/openai/v1\"."
+        "notes": "Groq OpenAI-compatible endpoint.",
+        "notesZh": "Groq OpenAI 兼容端点。"
       }
     ]
   },
@@ -205,7 +219,8 @@
         "baseUrl": "https://api.together.ai/v1",
         "source": "https://docs.together.ai/reference/chat-completions.md",
         "lastVerified": "2026-05-07",
-        "notes": "Official chat completions OpenAPI defines server https://api.together.ai/v1 and the cURL sample posts to https://api.together.ai/v1/chat/completions."
+        "notes": "Together AI OpenAI-compatible endpoint.",
+        "notesZh": "Together AI OpenAI 兼容端点。"
       }
     ]
   },
@@ -222,7 +237,8 @@
         "baseUrl": "https://api.minimaxi.com/v1",
         "source": "https://platform.minimaxi.com/docs/api-reference/text-chat",
         "lastVerified": "2026-05-07",
-        "notes": "Official China mainland OpenAI-compatible docs send POST requests to https://api.minimaxi.com/v1/chat/completions."
+        "notes": "MiniMax mainland public OpenAI-compatible endpoint.",
+        "notesZh": "MiniMax 中国大陆公共 OpenAI 兼容端点。"
       },
       {
         "id": "minimax-openai-global",
@@ -230,7 +246,8 @@
         "baseUrl": "https://api.minimax.io/v1",
         "source": "https://platform.minimax.io/docs/guides/text-generation",
         "lastVerified": "2026-05-07",
-        "notes": "Official global text-generation docs list base_url (OpenAI-compatible) as https://api.minimax.io/v1 and show curl to /v1/chat/completions."
+        "notes": "MiniMax global public OpenAI-compatible endpoint.",
+        "notesZh": "MiniMax 全球公共 OpenAI 兼容端点。"
       },
       {
         "id": "minimax-anthropic-cn",
@@ -238,7 +255,8 @@
         "baseUrl": "https://api.minimaxi.com/anthropic",
         "source": "https://platform.minimaxi.com/docs/api-reference/text-anthropic-api",
         "lastVerified": "2026-05-07",
-        "notes": "Official China mainland Anthropic compatibility docs set ANTHROPIC_BASE_URL=https://api.minimaxi.com/anthropic and the request reference shows POST https://api.minimaxi.com/anthropic/v1/messages."
+        "notes": "MiniMax mainland Anthropic-compatible endpoint.",
+        "notesZh": "MiniMax 中国大陆 Anthropic 兼容端点。"
       },
       {
         "id": "minimax-anthropic-global",
@@ -246,7 +264,8 @@
         "baseUrl": "https://api.minimax.io/anthropic",
         "source": "https://platform.minimax.io/docs/api-reference/text-anthropic-api",
         "lastVerified": "2026-05-07",
-        "notes": "Official global Anthropic compatibility docs set ANTHROPIC_BASE_URL=https://api.minimax.io/anthropic; the global text-generation guide also lists base_url (Anthropic-compatible, recommended) as https://api.minimax.io/anthropic."
+        "notes": "MiniMax global Anthropic-compatible endpoint.",
+        "notesZh": "MiniMax 全球 Anthropic 兼容端点。"
       }
     ]
   },
@@ -263,7 +282,8 @@
         "baseUrl": "https://api.xiaomimimo.com/v1",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/api/chat/openai-api",
         "lastVerified": "2026-05-08",
-        "notes": "Official OpenAI compatibility docs expose POST https://api.xiaomimimo.com/v1/chat/completions, which maps to the standard public OpenAI-compatible service root https://api.xiaomimimo.com/v1."
+        "notes": "MiMo standard public OpenAI-compatible endpoint.",
+        "notesZh": "MiMo 标准公共 OpenAI 兼容端点。"
       },
       {
         "id": "xiaomimimo-anthropic",
@@ -271,7 +291,8 @@
         "baseUrl": "https://api.xiaomimimo.com/anthropic",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/api/chat/anthropic-api",
         "lastVerified": "2026-05-08",
-        "notes": "Official Anthropic compatibility docs expose POST https://api.xiaomimimo.com/anthropic/v1/messages, which maps to the standard public Anthropic-compatible service root https://api.xiaomimimo.com/anthropic."
+        "notes": "MiMo standard public Anthropic-compatible endpoint.",
+        "notesZh": "MiMo 标准公共 Anthropic 兼容端点。"
       },
       {
         "id": "xiaomimimo-token-plan-cn-openai",
@@ -279,7 +300,8 @@
         "baseUrl": "https://token-plan-cn.xiaomimimo.com/v1",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "Official Token Plan subscription docs list the China cluster OpenAI-compatible Base URL as https://token-plan-cn.xiaomimimo.com/v1 for coding-tool subscriptions; the standard public API docs separately use api.xiaomimimo.com for regular API traffic."
+        "notes": "MiMo Token Plan China cluster for coding-tool OpenAI-compatible access.",
+        "notesZh": "MiMo Token Plan 中国区集群，用于 coding-tool 的 OpenAI 兼容访问。"
       },
       {
         "id": "xiaomimimo-token-plan-cn-anthropic",
@@ -287,7 +309,8 @@
         "baseUrl": "https://token-plan-cn.xiaomimimo.com/anthropic",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "Official Token Plan subscription docs list the China cluster Anthropic-compatible Base URL as https://token-plan-cn.xiaomimimo.com/anthropic for coding-tool subscriptions; the standard public API docs separately use api.xiaomimimo.com/anthropic/v1/messages for regular API traffic."
+        "notes": "MiMo Token Plan China cluster for coding-tool Anthropic-compatible access.",
+        "notesZh": "MiMo Token Plan 中国区集群，用于 coding-tool 的 Anthropic 兼容访问。"
       },
       {
         "id": "xiaomimimo-token-plan-sgp-openai",
@@ -295,7 +318,8 @@
         "baseUrl": "https://token-plan-sgp.xiaomimimo.com/v1",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "Official Token Plan subscription docs list the Singapore cluster OpenAI-compatible Base URL as https://token-plan-sgp.xiaomimimo.com/v1 for coding-tool subscriptions."
+        "notes": "MiMo Token Plan Singapore cluster for coding-tool OpenAI-compatible access.",
+        "notesZh": "MiMo Token Plan 新加坡区集群，用于 coding-tool 的 OpenAI 兼容访问。"
       },
       {
         "id": "xiaomimimo-token-plan-sgp-anthropic",
@@ -303,7 +327,8 @@
         "baseUrl": "https://token-plan-sgp.xiaomimimo.com/anthropic",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "Official Token Plan subscription docs list the Singapore cluster Anthropic-compatible Base URL as https://token-plan-sgp.xiaomimimo.com/anthropic for coding-tool subscriptions."
+        "notes": "MiMo Token Plan Singapore cluster for coding-tool Anthropic-compatible access.",
+        "notesZh": "MiMo Token Plan 新加坡区集群，用于 coding-tool 的 Anthropic 兼容访问。"
       },
       {
         "id": "xiaomimimo-token-plan-ams-openai",
@@ -311,7 +336,8 @@
         "baseUrl": "https://token-plan-ams.xiaomimimo.com/v1",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "Official Token Plan subscription docs list the Europe cluster OpenAI-compatible Base URL as https://token-plan-ams.xiaomimimo.com/v1 for coding-tool subscriptions."
+        "notes": "MiMo Token Plan Europe cluster for coding-tool OpenAI-compatible access.",
+        "notesZh": "MiMo Token Plan 欧洲区集群，用于 coding-tool 的 OpenAI 兼容访问。"
       },
       {
         "id": "xiaomimimo-token-plan-ams-anthropic",
@@ -319,7 +345,8 @@
         "baseUrl": "https://token-plan-ams.xiaomimimo.com/anthropic",
         "source": "https://platform.xiaomimimo.com/docs/zh-CN/tokenplan/subscription",
         "lastVerified": "2026-05-08",
-        "notes": "Official Token Plan subscription docs list the Europe cluster Anthropic-compatible Base URL as https://token-plan-ams.xiaomimimo.com/anthropic for coding-tool subscriptions."
+        "notes": "MiMo Token Plan Europe cluster for coding-tool Anthropic-compatible access.",
+        "notesZh": "MiMo Token Plan 欧洲区集群，用于 coding-tool 的 Anthropic 兼容访问。"
       }
     ]
   }

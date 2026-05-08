@@ -109,7 +109,7 @@ function validateEndpointShape(errors, endpoint, provider, index) {
     return;
   }
 
-  const allowedKeys = new Set(["id", "protocol", "baseUrl", "source", "lastVerified", "notes"]);
+  const allowedKeys = new Set(["id", "protocol", "baseUrl", "source", "lastVerified", "notes", "notesZh"]);
   for (const key of Object.keys(endpoint)) {
     if (!allowedKeys.has(key)) errors.push(`${prefix}.${key} is not allowed.`);
   }
@@ -128,6 +128,9 @@ function validateEndpointShape(errors, endpoint, provider, index) {
   }
   if (typeof endpoint.notes !== "string") {
     errors.push(`${prefix}.notes must be a string.`);
+  }
+  if (typeof endpoint.notesZh !== "string") {
+    errors.push(`${prefix}.notesZh must be a string.`);
   }
 }
 
