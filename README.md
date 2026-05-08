@@ -10,8 +10,6 @@ Open the live directory to quickly browse current AI provider base URLs:
 
 The site supports search, protocol filtering, one-click copy, and language switching (English / 中文).
 
-A focused, machine-readable registry for AI API base URLs.
-
 AI providers expose compatible APIs through different base URLs, docs pages, regions, and naming conventions. This project gives developers one clean place to answer the practical question: what base URL should I configure for this provider and protocol?
 
 If you spot a missing provider, outdated information, or a better official source, open a PR and update [data/providers.json](data/providers.json). Every careful contribution helps the next developer integrate faster and avoid one more unnecessary detour.
@@ -47,9 +45,9 @@ The current focus is:
 - `openai-compatible`
 - `anthropic-compatible`
 
-Getting these two common integration paths right is more useful than expanding the scope too quickly. If a new protocol has a clear, stable real-world need, a PR is a good place to discuss it.
+Getting the common integration paths right is more useful than expanding scope too quickly. If a new protocol has a clear, stable real-world need, a PR is a good place to discuss it.
 
-## Before You Open a PR
+## PR Checklist
 
 ```bash
 npm run validate
@@ -57,7 +55,7 @@ npm run generate
 npm run check
 ```
 
-- `npm run validate`: run a quick local sanity check first.
+- `npm run validate`: run a quick local sanity check.
 - `npm run generate`: sync the data used by the site.
 - `npm run check`: do one final pass before you open the PR.
 
@@ -65,10 +63,8 @@ If you are adding or updating a provider, edit [data/providers.json](data/provid
 
 ## Contributing
 
-Missing providers, outdated entries, and better official sources are all valuable contributions. Every careful PR makes this registry more useful for the next developer.
-
 - Every new or changed endpoint should include a public official source URL.
 - Before adding a provider, search existing names, aliases, domains, and base URLs to avoid duplicates.
 - Do not include API keys, private gateway URLs, account-specific endpoints, or copied restricted documentation.
 
-The goal is not to collect the most entries. The goal is to keep the list trustworthy and directly useful. If something is still uncertain, opening a PR or issue for discussion is already a helpful contribution.
+The goal is not to collect the most entries. It is to keep the list trustworthy and directly useful. If something is still uncertain, opening a PR or issue for discussion is already a helpful contribution.

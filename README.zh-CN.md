@@ -10,8 +10,6 @@
 
 站点支持搜索、协议筛选、一键复制和语言切换（English / 中文）。
 
-一个专注、结构化、可机器读取的 AI API Base URL 注册表。
-
 AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路径和命名方式里。这个项目解决一个非常实际的问题：接入某个平台、某种协议时，开发者到底应该配置哪个 base URL？
 
 如果你发现某个平台缺失、信息过期，或能补充更准确的官方来源，欢迎直接提交 PR；更新 [data/providers.json](data/providers.json) 即可。每一次认真补充，都能帮后来的开发者更快接入、少踩一点坑。
@@ -47,9 +45,9 @@ AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路
 - `openai-compatible`
 - `anthropic-compatible`
 
-先把这两类最常见、最能直接帮到开发者的配置整理准确，比盲目扩展范围更有价值。如果后续出现明确、稳定的真实需求，也欢迎通过 PR 一起讨论扩展。
+先把最常见、最直接影响接入体验的协议整理准确，比盲目扩展范围更有价值。若后续出现明确、稳定的真实需求，也欢迎通过 PR 讨论扩展。
 
-## 提交前自检
+## PR 自检
 
 ```bash
 npm run validate
@@ -57,18 +55,16 @@ npm run generate
 npm run check
 ```
 
-- `npm run validate`：先做一轮基础检查，尽量把问题留在本地解决。
+- `npm run validate`：先做基础检查。
 - `npm run generate`：同步页面使用的数据文件。
-- `npm run check`：在提交前做一次完整确认，减少 review 往返。
+- `npm run check`：提交前再做一次完整确认。
 
 如果你准备提交 PR，直接更新 [data/providers.json](data/providers.json) 即可；其他展示文件会基于它同步生成。
 
 ## 贡献方式
 
-欢迎补充缺失平台、修正过期信息，或补上更可靠的官方来源。每一次认真补充，都会让后来者少走一点弯路。
-
 - 每个新增或修改的 endpoint，都请附上公开可访问的官方来源。
 - 新增 provider 前，先搜索已有 provider 名称、别名、域名和 base URL，避免重复提交。
 - 不要提交 API key、私有网关 URL、账号专属 endpoint，或复制受限文档内容。
 
-这个 registry 的目标不是收得越多越好，而是尽可能让人拿来就能用、用得放心。若信息仍有不确定之处，也欢迎先提 PR 或 issue 一起讨论。
+目标不是收得越多越好，而是尽可能让人拿来就能用、用得放心。若信息仍有不确定之处，也欢迎先提 PR 或 issue 一起讨论。
