@@ -16,25 +16,6 @@ AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路
 
 这不是一个 awesome-list。项目的核心资产是 [data/providers.json](data/providers.json)：一份 canonical、可校验、适合工具读取和 PR 审查的数据集。[docs/](docs/) 里的静态页面只是这份数据的人类友好视图。
 
-## 项目取舍
-
-- **可信条目**：每个 endpoint 都必须链接到官方来源。
-- **稳定身份**：provider ID、别名、域名和 base URL 都会做重复校验。
-- **克制协议范围**：在 registry 有充分理由扩展前，只支持 `openai-compatible` 和 `anthropic-compatible`。
-- **默认静态化**：不需要后端，不收 API key，不做账号相关探测。
-- **数据优先**：README 负责解释项目，`providers.json` 承载 registry。
-
-## 仓库结构
-
-```text
-data/providers.json        唯一事实源 registry 数据
-docs/index.html            GitHub Pages 静态页面
-docs/app.js                浏览器搜索、语言切换、筛选和复制交互
-docs/providers.json        面向 GitHub Pages 的生成副本
-scripts/validate.js        registry 结构和唯一性校验
-scripts/sync-docs-data.js  同步 data/providers.json 到 docs/providers.json
-```
-
 ## 数据模型
 
 每个平台都有一个 canonical `id`，可选的 `aliases`，一个或多个 `domains`，以及一个或多个 endpoints。

@@ -16,25 +16,6 @@ AI providers expose compatible APIs through different base URLs, docs pages, reg
 
 This is not an awesome list. The core asset is [data/providers.json](data/providers.json): a canonical, validated dataset designed for tooling, static sites, and pull-request review. The web UI in [docs/](docs/) is a human-friendly view over the same data.
 
-## What This Project Optimizes For
-
-- **Trustworthy entries**: every endpoint must link to an official source.
-- **Stable identities**: provider IDs, aliases, domains, and base URLs are checked for duplicates.
-- **Small protocol surface**: support only for `openai-compatible` and `anthropic-compatible` until the registry has a reason to expand.
-- **Static by default**: no backend, no API keys, no account-specific probing.
-- **Data first**: README explains the project; `providers.json` carries the registry.
-
-## Repository Layout
-
-```text
-data/providers.json        Canonical registry data
-docs/index.html            Static GitHub Pages UI
-docs/app.js                Browser search, language switch, filtering, and copy actions
-docs/providers.json        Generated copy for GitHub Pages
-scripts/validate.js        Registry shape and uniqueness checks
-scripts/sync-docs-data.js  Syncs data/providers.json to docs/providers.json
-```
-
 ## Data Model
 
 Each provider has one canonical `id`, optional `aliases`, one or more `domains`, and one or more endpoints.
