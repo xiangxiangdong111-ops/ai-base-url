@@ -7,6 +7,7 @@ const rootDir = path.resolve(__dirname, "..");
 const providersPath = path.join(rootDir, "data", "providers.json");
 
 const allowedProtocols = new Set(["openai-compatible", "anthropic-compatible"]);
+const allowedProviderTypes = new Set(["model-provider", "cloud-platform"]);
 const idPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -77,7 +78,7 @@ function validateProviderShape(errors, provider, index) {
     return;
   }
 
-  const allowedKeys = new Set(["id", "name", "aliases", "website", "domains", "endpoints"]);
+  const allowedKeys = new Set(["id", "name", "providerType", "popularityRank", "aliases", "website", "domains", "endpoints"]);
   for (const key of Object.keys(provider)) {
     if (!allowedKeys.has(key)) errors.push(`${prefix}.${key} is not allowed.`);
   }
@@ -87,6 +88,12 @@ function validateProviderShape(errors, provider, index) {
   }
   if (typeof provider.name !== "string" || provider.name.trim() === "") {
     errors.push(`${prefix}.name must be a non-empty string.`);
+  }
+  if (!allowedProviderTypes.has(provider.providerType)) {
+    errors.push(`${prefix}.providerType must be one of: ${Array.from(allowedProviderTypes).join(", ")}.`);
+  }
+  if (!Number.isInteger(provider.popularityRank) || provider.popularityRank < 1) {
+    errors.push(`${prefix}.popularityRank must be a positive integer.`);
   }
   if (!Array.isArray(provider.aliases)) {
     errors.push(`${prefix}.aliases must be an array.`);

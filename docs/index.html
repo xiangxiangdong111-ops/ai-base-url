@@ -29,11 +29,30 @@
     <main class="layout">
       <section class="registry-panel" aria-label="Base URL list" data-i18n-aria-label="baseUrlRegistry">
         <div class="panel-heading">
-          <div class="tabs" role="tablist" aria-label="Protocol filter" data-i18n-aria-label="protocolFilter">
-            <p id="registry-count" class="results-count" aria-live="polite">Loading providers...</p>
-            <button class="tab is-active" type="button" data-protocol="all" data-i18n="tabAll">All</button>
-            <button class="tab" type="button" data-protocol="openai-compatible">OpenAI</button>
-            <button class="tab" type="button" data-protocol="anthropic-compatible">Anthropic</button>
+          <div class="filter-toolbar">
+            <div class="filter-meta">
+              <p class="filter-title" data-i18n="filterTitle">Refine</p>
+              <p id="registry-count" class="results-count" aria-live="polite">Loading providers...</p>
+            </div>
+            <div class="filter-controls">
+              <label class="filter-control">
+                <span class="filter-caption" data-i18n="protocolFilter">Protocol filter</span>
+                <select id="protocol-filter" class="filter-select" data-i18n-aria-label="protocolFilter">
+                  <option value="all" data-i18n="protocolAll">All protocols</option>
+                  <option value="openai-compatible">OpenAI</option>
+                  <option value="anthropic-compatible">Anthropic</option>
+                </select>
+              </label>
+              <label class="filter-control">
+                <span class="filter-caption" data-i18n="providerTypeFilter">Provider type filter</span>
+                <select id="provider-group-filter" class="filter-select" data-i18n-aria-label="providerTypeFilter">
+                  <option value="all" data-i18n="typeTabAll">All types</option>
+                  <option value="model-provider" data-i18n="groupModelProviders">Model Providers</option>
+                  <option value="cloud-platform" data-i18n="groupCloudPlatforms">Cloud Platforms</option>
+                </select>
+              </label>
+              <button id="reset-filters" class="filter-reset" type="button" data-i18n="resetFilters">Reset</button>
+            </div>
           </div>
         </div>
 

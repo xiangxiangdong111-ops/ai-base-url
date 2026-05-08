@@ -5,8 +5,13 @@ const translations = {
     languageSwitcher: "Language switcher",
     openGithub: "Open GitHub repository",
     loadingProviders: "Loading providers...",
+    filterTitle: "Refine",
     protocolFilter: "Protocol filter",
+    providerTypeFilter: "Provider type filter",
     tabAll: "All",
+    protocolAll: "All protocols",
+    typeTabAll: "All types",
+    resetFilters: "Reset",
     searchLabel: "Search",
     searchPlaceholder: "Provider, alias, domain, or base URL",
     baseUrlRegistry: "Base URL list",
@@ -38,8 +43,13 @@ const translations = {
     languageSwitcher: "语言切换",
     openGithub: "打开 GitHub 仓库",
     loadingProviders: "正在加载平台...",
+    filterTitle: "检索条件",
     protocolFilter: "协议筛选",
+    providerTypeFilter: "平台类型筛选",
     tabAll: "全部",
+    protocolAll: "全部协议",
+    typeTabAll: "全部类型",
+    resetFilters: "重置",
     searchLabel: "搜索",
     searchPlaceholder: "平台、别名、域名或 Base URL",
     baseUrlRegistry: "Base URL 列表",
@@ -70,29 +80,10 @@ const translations = {
 const state = {
   providers: [],
   protocol: "all",
+  providerGroup: "all",
   query: "",
   locale: initialLocale(),
   loadError: null
-};
-
-const providerMetaById = {
-  openai: { group: "model-provider", popularity: 1 },
-  anthropic: { group: "model-provider", popularity: 2 },
-  google: { group: "model-provider", popularity: 3 },
-  deepseek: { group: "model-provider", popularity: 4 },
-  xai: { group: "model-provider", popularity: 5 },
-  "zhipu-ai": { group: "model-provider", popularity: 6 },
-  tencent: { group: "model-provider", popularity: 7 },
-  moonshot: { group: "model-provider", popularity: 8 },
-  bytedance: { group: "model-provider", popularity: 9 },
-  minimax: { group: "model-provider", popularity: 10 },
-  xiaomimimo: { group: "model-provider", popularity: 11 },
-  openrouter: { group: "cloud-platform", popularity: 1 },
-  "amazon-bedrock": { group: "cloud-platform", popularity: 2 },
-  dashscope: { group: "cloud-platform", popularity: 3 },
-  siliconflow: { group: "cloud-platform", popularity: 4 },
-  groq: { group: "cloud-platform", popularity: 5 },
-  "together-ai": { group: "cloud-platform", popularity: 6 }
 };
 
 const providerGroupOrder = {
@@ -103,7 +94,9 @@ const providerGroupOrder = {
 const rowsEl = document.querySelector("#provider-rows");
 const countEl = document.querySelector("#registry-count");
 const searchEl = document.querySelector("#search-input");
-const tabs = Array.from(document.querySelectorAll(".tab"));
+const protocolFilterEl = document.querySelector("#protocol-filter");
+const providerGroupFilterEl = document.querySelector("#provider-group-filter");
+const resetFiltersEl = document.querySelector("#reset-filters");
 const languageButtons = Array.from(document.querySelectorAll(".language-button"));
 
 function initialLocale() {
@@ -121,7 +114,10 @@ function t(key, values = {}) {
 }
 
 function providerMeta(provider) {
-  return providerMetaById[provider.id] || { group: "model-provider", popularity: 999 };
+  return {
+    group: provider.providerType || "model-provider",
+    popularity: Number.isInteger(provider.popularityRank) ? provider.popularityRank : 999
+  };
 }
 
 function compareProviders(left, right) {
@@ -183,8 +179,9 @@ function providerSearchText(provider, endpoint) {
 function filteredRecords() {
   return endpointRecords().filter(({ provider, endpoint }) => {
     const matchesProtocol = state.protocol === "all" || endpoint.protocol === state.protocol;
+    const matchesProviderGroup = state.providerGroup === "all" || providerMeta(provider).group === state.providerGroup;
     const matchesQuery = !state.query || providerSearchText(provider, endpoint).includes(state.query);
-    return matchesProtocol && matchesQuery;
+    return matchesProtocol && matchesProviderGroup && matchesQuery;
   });
 }
 
@@ -235,6 +232,8 @@ function applyTranslations() {
   languageButtons.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.lang === state.locale);
   });
+
+  syncFilterControls();
 
   if (state.loadError) {
     rowsEl.innerHTML = `<tr><td class="empty-row" colspan="7">${state.loadError}</td></tr>`;
@@ -381,6 +380,14 @@ function renderRows() {
     shown: records.length,
     total: endpointRecords().length
   });
+
+  syncFilterControls();
+}
+
+function syncFilterControls() {
+  protocolFilterEl.value = state.protocol;
+  providerGroupFilterEl.value = state.providerGroup;
+  resetFiltersEl.disabled = state.protocol === "all" && state.providerGroup === "all" && !state.query;
 }
 
 async function loadProviders() {
@@ -392,12 +399,22 @@ async function loadProviders() {
   renderRows();
 }
 
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => {
-    state.protocol = tab.dataset.protocol;
-    tabs.forEach((item) => item.classList.toggle("is-active", item === tab));
-    renderRows();
-  });
+protocolFilterEl.addEventListener("change", () => {
+  state.protocol = protocolFilterEl.value;
+  renderRows();
+});
+
+providerGroupFilterEl.addEventListener("change", () => {
+  state.providerGroup = providerGroupFilterEl.value;
+  renderRows();
+});
+
+resetFiltersEl.addEventListener("click", () => {
+  state.protocol = "all";
+  state.providerGroup = "all";
+  state.query = "";
+  searchEl.value = "";
+  renderRows();
 });
 
 languageButtons.forEach((button) => {

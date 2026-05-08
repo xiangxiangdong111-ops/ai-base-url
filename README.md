@@ -8,7 +8,7 @@ Open the live directory to quickly browse current AI provider base URLs:
 
 **[https://xiangxiangdong111-ops.github.io/ai-base-url/](https://xiangxiangdong111-ops.github.io/ai-base-url/)**
 
-The site supports search, protocol filtering, one-click copy, and language switching (English / 中文).
+The site supports search, protocol filtering, provider type filtering, one-click copy, and language switching (English / 中文).
 
 AI providers expose compatible APIs through different base URLs, docs pages, regions, and naming conventions. This project gives developers one clean place to answer the practical question: what base URL should I configure for this provider and protocol?
 
@@ -16,12 +16,17 @@ If you spot a missing provider, outdated information, or a better official sourc
 
 ## Data Model
 
-Each provider has one canonical `id`, optional `aliases`, one or more `domains`, and one or more endpoints.
+Each provider has one canonical `id`, a `providerType`, a `popularityRank`, optional `aliases`, one or more `domains`, and one or more endpoints.
+
+- `providerType`: `model-provider` or `cloud-platform`. This is the single source of truth for provider-type filtering and grouping in the UI.
+- `popularityRank`: a positive integer used to sort providers within the same `providerType`. Lower numbers appear first.
 
 ```json
 {
   "id": "deepseek",
   "name": "DeepSeek",
+  "providerType": "model-provider",
+  "popularityRank": 4,
   "aliases": ["deep-seek", "deep_seek"],
   "website": "https://www.deepseek.com",
   "domains": ["deepseek.com", "api.deepseek.com"],
@@ -32,7 +37,8 @@ Each provider has one canonical `id`, optional `aliases`, one or more `domains`,
       "baseUrl": "https://api.deepseek.com",
       "source": "https://api-docs.deepseek.com/",
       "lastVerified": "2026-05-07",
-      "notes": "OpenAI-compatible API endpoint."
+      "notes": "OpenAI-compatible API endpoint.",
+      "notesZh": "DeepSeek 通用 OpenAI 兼容端点。"
     }
   ]
 }

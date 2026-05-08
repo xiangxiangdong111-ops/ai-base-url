@@ -2,6 +2,8 @@
   {
     "id": "openai",
     "name": "OpenAI",
+    "providerType": "model-provider",
+    "popularityRank": 1,
     "aliases": [
       "open-ai",
       "open_ai",
@@ -28,6 +30,8 @@
   {
     "id": "anthropic",
     "name": "Anthropic",
+    "providerType": "model-provider",
+    "popularityRank": 2,
     "aliases": [
       "claude",
       "anthropic-claude"
@@ -52,6 +56,8 @@
   {
     "id": "deepseek",
     "name": "DeepSeek",
+    "providerType": "model-provider",
+    "popularityRank": 4,
     "aliases": [
       "deep-seek",
       "deep_seek"
@@ -85,6 +91,8 @@
   {
     "id": "moonshot",
     "name": "Moonshot AI",
+    "providerType": "model-provider",
+    "popularityRank": 8,
     "aliases": [
       "kimi",
       "moonshot-ai",
@@ -110,6 +118,8 @@
   {
     "id": "zhipu-ai",
     "name": "Zhipu AI",
+    "providerType": "model-provider",
+    "popularityRank": 6,
     "aliases": [
       "zhipu",
       "bigmodel",
@@ -149,6 +159,8 @@
   {
     "id": "dashscope",
     "name": "Alibaba Cloud DashScope",
+    "providerType": "cloud-platform",
+    "popularityRank": 3,
     "aliases": [
       "aliyun-dashscope",
       "qwen",
@@ -177,6 +189,8 @@
   {
     "id": "siliconflow",
     "name": "SiliconFlow",
+    "providerType": "cloud-platform",
+    "popularityRank": 4,
     "aliases": [
       "silicon-flow",
       "硅基流动"
@@ -210,6 +224,8 @@
   {
     "id": "openrouter",
     "name": "OpenRouter",
+    "providerType": "cloud-platform",
+    "popularityRank": 1,
     "aliases": [
       "open-router",
       "open_router"
@@ -233,6 +249,8 @@
   {
     "id": "groq",
     "name": "Groq",
+    "providerType": "cloud-platform",
+    "popularityRank": 5,
     "aliases": [],
     "website": "https://groq.com",
     "domains": [
@@ -254,6 +272,8 @@
   {
     "id": "together-ai",
     "name": "Together AI",
+    "providerType": "cloud-platform",
+    "popularityRank": 6,
     "aliases": [
       "together",
       "togetherai"
@@ -278,6 +298,8 @@
   {
     "id": "minimax",
     "name": "MiniMax",
+    "providerType": "model-provider",
+    "popularityRank": 10,
     "aliases": [
       "mini-max",
       "minimax-ai",
@@ -332,6 +354,8 @@
   {
     "id": "xiaomimimo",
     "name": "Xiaomi MiMo",
+    "providerType": "model-provider",
+    "popularityRank": 11,
     "aliases": [
       "xiaomi-mimo",
       "xiaomi mimo",
@@ -389,6 +413,8 @@
   {
     "id": "google",
     "name": "Google",
+    "providerType": "model-provider",
+    "popularityRank": 3,
     "aliases": [
       "google-ai",
       "google ai",
@@ -415,6 +441,8 @@
   {
     "id": "tencent",
     "name": "Tencent Hunyuan",
+    "providerType": "model-provider",
+    "popularityRank": 7,
     "aliases": [
       "tencent-ai",
       "tencent ai",
@@ -452,6 +480,8 @@
   {
     "id": "xai",
     "name": "xAI",
+    "providerType": "model-provider",
+    "popularityRank": 5,
     "aliases": [
       "x-ai",
       "x ai",
@@ -486,6 +516,8 @@
   {
     "id": "bytedance",
     "name": "Volcengine Ark",
+    "providerType": "model-provider",
+    "popularityRank": 9,
     "aliases": [
       "bytedance",
       "byte-dance",
@@ -518,6 +550,8 @@
   {
     "id": "amazon-bedrock",
     "name": "Amazon Bedrock",
+    "providerType": "cloud-platform",
+    "popularityRank": 2,
     "aliases": [
       "aws-bedrock",
       "aws bedrock",

@@ -8,7 +8,7 @@
 
 **[https://xiangxiangdong111-ops.github.io/ai-base-url/](https://xiangxiangdong111-ops.github.io/ai-base-url/)**
 
-站点支持搜索、协议筛选、一键复制和语言切换（English / 中文）。
+站点支持搜索、协议筛选、平台类型筛选、一键复制和语言切换（English / 中文）。
 
 AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路径和命名方式里。这个项目解决一个非常实际的问题：接入某个平台、某种协议时，开发者到底应该配置哪个 base URL？
 
@@ -16,12 +16,17 @@ AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路
 
 ## 数据模型
 
-每个平台都有一个 canonical `id`，可选的 `aliases`，一个或多个 `domains`，以及一个或多个 endpoints。
+每个平台都有一个 canonical `id`、一个 `providerType`、一个 `popularityRank`、可选的 `aliases`、一个或多个 `domains`，以及一个或多个 endpoints。
+
+- `providerType`：取值为 `model-provider` 或 `cloud-platform`，它是前端平台类型筛选与分组显示的唯一来源。
+- `popularityRank`：同一 `providerType` 内的排序值，必须是正整数，数字越小越靠前。
 
 ```json
 {
   "id": "deepseek",
   "name": "DeepSeek",
+  "providerType": "model-provider",
+  "popularityRank": 4,
   "aliases": ["deep-seek", "deep_seek"],
   "website": "https://www.deepseek.com",
   "domains": ["deepseek.com", "api.deepseek.com"],
@@ -32,7 +37,8 @@ AI 平台经常把兼容 API 放在不同的 base URL、文档页面、区域路
       "baseUrl": "https://api.deepseek.com",
       "source": "https://api-docs.deepseek.com/",
       "lastVerified": "2026-05-07",
-      "notes": "OpenAI-compatible API endpoint."
+      "notes": "OpenAI-compatible API endpoint.",
+      "notesZh": "DeepSeek 通用 OpenAI 兼容端点。"
     }
   ]
 }

@@ -2,6 +2,8 @@
   {
     "id": "openai",
     "name": "OpenAI",
+    "providerType": "model-provider",
+    "popularityRank": 1,
     "aliases": ["open-ai", "open_ai", "open ai", "openAI"],
     "website": "https://openai.com",
     "domains": ["openai.com", "api.openai.com"],
@@ -20,6 +22,8 @@
   {
     "id": "anthropic",
     "name": "Anthropic",
+    "providerType": "model-provider",
+    "popularityRank": 2,
     "aliases": ["claude", "anthropic-claude"],
     "website": "https://www.anthropic.com",
     "domains": ["anthropic.com", "api.anthropic.com"],
@@ -38,6 +42,8 @@
   {
     "id": "deepseek",
     "name": "DeepSeek",
+    "providerType": "model-provider",
+    "popularityRank": 4,
     "aliases": ["deep-seek", "deep_seek"],
     "website": "https://www.deepseek.com",
     "domains": ["deepseek.com", "api.deepseek.com"],
@@ -65,6 +71,8 @@
   {
     "id": "moonshot",
     "name": "Moonshot AI",
+    "providerType": "model-provider",
+    "popularityRank": 8,
     "aliases": ["kimi", "moonshot-ai", "moonshotai"],
     "website": "https://www.moonshot.cn",
     "domains": ["moonshot.cn", "api.moonshot.cn"],
@@ -83,6 +91,8 @@
   {
     "id": "zhipu-ai",
     "name": "Zhipu AI",
+    "providerType": "model-provider",
+    "popularityRank": 6,
     "aliases": ["zhipu", "bigmodel", "glm", "z.ai", "z ai", "z-ai", "智谱", "智谱AI"],
     "website": "https://open.bigmodel.cn",
     "domains": ["bigmodel.cn", "open.bigmodel.cn"],
@@ -110,6 +120,8 @@
   {
     "id": "dashscope",
     "name": "Alibaba Cloud DashScope",
+    "providerType": "cloud-platform",
+    "popularityRank": 3,
     "aliases": ["aliyun-dashscope", "qwen", "tongyi", "通义千问"],
     "website": "https://dashscope.aliyun.com",
     "domains": ["dashscope.aliyun.com", "dashscope.aliyuncs.com", "dashscope-us.aliyuncs.com", "dashscope-intl.aliyuncs.com"],
@@ -128,6 +140,8 @@
   {
     "id": "siliconflow",
     "name": "SiliconFlow",
+    "providerType": "cloud-platform",
+    "popularityRank": 4,
     "aliases": ["silicon-flow", "硅基流动"],
     "website": "https://siliconflow.cn",
     "domains": ["siliconflow.cn", "api.siliconflow.cn"],
@@ -155,6 +169,8 @@
   {
     "id": "openrouter",
     "name": "OpenRouter",
+    "providerType": "cloud-platform",
+    "popularityRank": 1,
     "aliases": ["open-router", "open_router"],
     "website": "https://openrouter.ai",
     "domains": ["openrouter.ai"],
@@ -173,6 +189,8 @@
   {
     "id": "groq",
     "name": "Groq",
+    "providerType": "cloud-platform",
+    "popularityRank": 5,
     "aliases": [],
     "website": "https://groq.com",
     "domains": ["groq.com", "api.groq.com"],
@@ -191,6 +209,8 @@
   {
     "id": "together-ai",
     "name": "Together AI",
+    "providerType": "cloud-platform",
+    "popularityRank": 6,
     "aliases": ["together", "togetherai"],
     "website": "https://www.together.ai",
     "domains": ["together.ai", "api.together.ai"],
@@ -209,6 +229,8 @@
   {
     "id": "minimax",
     "name": "MiniMax",
+    "providerType": "model-provider",
+    "popularityRank": 10,
     "aliases": ["mini-max", "minimax-ai", "minimaxi"],
     "website": "https://www.minimax.io",
     "domains": ["minimaxi.com", "minimax.io", "api.minimaxi.com", "api.minimax.io"],
@@ -254,6 +276,8 @@
   {
     "id": "xiaomimimo",
     "name": "Xiaomi MiMo",
+    "providerType": "model-provider",
+    "popularityRank": 11,
     "aliases": ["xiaomi-mimo", "xiaomi mimo", "mimo", "xiaomimimo"],
     "website": "https://platform.xiaomimimo.com",
     "domains": ["xiaomimimo.com", "platform.xiaomimimo.com", "api.xiaomimimo.com", "token-plan-cn.xiaomimimo.com", "token-plan-sgp.xiaomimimo.com", "token-plan-ams.xiaomimimo.com"],
@@ -299,6 +323,8 @@
   {
     "id": "google",
     "name": "Google",
+    "providerType": "model-provider",
+    "popularityRank": 3,
     "aliases": ["google-ai", "google ai", "gemini", "google gemini"],
     "website": "https://ai.google.dev",
     "domains": ["ai.google.dev", "generativelanguage.googleapis.com"],
@@ -317,6 +343,8 @@
   {
     "id": "tencent",
     "name": "Tencent Hunyuan",
+    "providerType": "model-provider",
+    "popularityRank": 7,
     "aliases": ["tencent-ai", "tencent ai", "hunyuan", "腾讯混元", "混元"],
     "website": "https://cloud.tencent.com/document/product/1729",
     "domains": ["cloud.tencent.com", "hunyuan.cloud.tencent.com", "api.hunyuan.cloud.tencent.com"],
@@ -344,6 +372,8 @@
   {
     "id": "xai",
     "name": "xAI",
+    "providerType": "model-provider",
+    "popularityRank": 5,
     "aliases": ["x-ai", "x ai", "grok"],
     "website": "https://x.ai",
     "domains": ["x.ai", "api.x.ai"],
@@ -371,6 +401,8 @@
   {
     "id": "bytedance",
     "name": "Volcengine Ark",
+    "providerType": "model-provider",
+    "popularityRank": 9,
     "aliases": ["bytedance", "byte-dance", "volcengine", "volcengine ark", "doubao", "字节跳动", "火山引擎", "火山方舟", "豆包"],
     "website": "https://www.volcengine.com/product/ark",
     "domains": ["volcengine.com", "console.volcengine.com", "ark.cn-beijing.volces.com"],
@@ -389,6 +421,8 @@
   {
     "id": "amazon-bedrock",
     "name": "Amazon Bedrock",
+    "providerType": "cloud-platform",
+    "popularityRank": 2,
     "aliases": ["aws-bedrock", "aws bedrock", "bedrock", "amazon bedrock"],
     "website": "https://aws.amazon.com/bedrock",
     "domains": ["aws.amazon.com", "docs.aws.amazon.com", "bedrock-runtime.us-east-1.amazonaws.com"],
