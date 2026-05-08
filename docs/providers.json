@@ -345,6 +345,22 @@
     ],
     "endpoints": [
       {
+        "id": "xiaomimimo-openai",
+        "protocol": "openai-compatible",
+        "baseUrl": "https://api.xiaomimimo.com/v1",
+        "source": "https://platform.xiaomimimo.com/docs/zh-CN/api/chat/openai-api",
+        "lastVerified": "2026-05-08",
+        "notes": "Official OpenAI compatibility docs expose POST https://api.xiaomimimo.com/v1/chat/completions, which maps to the standard public OpenAI-compatible service root https://api.xiaomimimo.com/v1."
+      },
+      {
+        "id": "xiaomimimo-anthropic",
+        "protocol": "anthropic-compatible",
+        "baseUrl": "https://api.xiaomimimo.com/anthropic",
+        "source": "https://platform.xiaomimimo.com/docs/zh-CN/api/chat/anthropic-api",
+        "lastVerified": "2026-05-08",
+        "notes": "Official Anthropic compatibility docs expose POST https://api.xiaomimimo.com/anthropic/v1/messages, which maps to the standard public Anthropic-compatible service root https://api.xiaomimimo.com/anthropic."
+      },
+      {
         "id": "xiaomimimo-token-plan-cn-openai",
         "protocol": "openai-compatible",
         "baseUrl": "https://token-plan-cn.xiaomimimo.com/v1",

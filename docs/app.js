@@ -24,7 +24,8 @@ const translations = {
     failedLoad: "Failed to load provider list data",
     cannotLoadProviders: "Cannot load providers.json: {status}",
     protocolOpenAI: "OpenAI",
-    protocolAnthropic: "Anthropic"
+    protocolAnthropic: "Anthropic",
+    endpointCount: "{count} endpoints"
   },
   "zh-CN": {
     documentTitle: "AI Base URL 列表",
@@ -51,7 +52,8 @@ const translations = {
     failedLoad: "加载平台列表数据失败",
     cannotLoadProviders: "无法加载 providers.json：{status}",
     protocolOpenAI: "OpenAI",
-    protocolAnthropic: "Anthropic"
+    protocolAnthropic: "Anthropic",
+    endpointCount: "{count} 条 endpoint"
   }
 };
 
@@ -114,6 +116,19 @@ function filteredRecords() {
   });
 }
 
+function groupedRecords() {
+  const groups = [];
+  for (const record of filteredRecords()) {
+    const currentGroup = groups[groups.length - 1];
+    if (currentGroup && currentGroup.provider.id === record.provider.id) {
+      currentGroup.records.push(record);
+      continue;
+    }
+    groups.push({ provider: record.provider, records: [record] });
+  }
+  return groups;
+}
+
 function protocolLabel(protocol) {
   if (protocol === "openai-compatible") {
     return t("protocolOpenAI");
@@ -154,6 +169,7 @@ function applyTranslations() {
 
 function renderRows() {
   const records = filteredRecords();
+  const groups = groupedRecords();
   rowsEl.innerHTML = "";
 
   if (records.length === 0) {
@@ -165,36 +181,79 @@ function renderRows() {
     row.append(cell);
     rowsEl.append(row);
   } else {
-    for (const { provider, endpoint } of records) {
-      const row = document.createElement("tr");
-      const aliases = provider.aliases?.length ? provider.aliases.slice(0, 3).join(", ") : "";
+    for (const group of groups) {
+      group.records.forEach(({ provider, endpoint }, index) => {
+        const row = document.createElement("tr");
+        row.className = "provider-row";
+        if (index === 0) {
+          row.classList.add("group-start");
+        }
+        if (index === group.records.length - 1) {
+          row.classList.add("group-end");
+        }
 
-      row.innerHTML = `
-        <td><span class="provider-name"></span><span class="aliases"></span></td>
-        <td><span class="protocol-pill ${endpoint.protocol}"></span></td>
-        <td><span class="code-text"></span></td>
-        <td></td>
-        <td><a target="_blank" rel="noreferrer"></a></td>
-        <td><button class="copy-button" type="button"></button></td>
-      `;
+        if (index === 0) {
+          const aliases = provider.aliases?.length ? provider.aliases.slice(0, 4).join(", ") : "";
+          const providerCell = document.createElement("td");
+          providerCell.className = "provider-cell";
+          providerCell.rowSpan = group.records.length;
+          providerCell.innerHTML = `
+            <div class="provider-summary">
+              <div>
+                <span class="provider-name"></span>
+                <span class="aliases"></span>
+              </div>
+              <span class="provider-count"></span>
+            </div>
+          `;
+          providerCell.querySelector(".provider-name").textContent = provider.name;
+          providerCell.querySelector(".aliases").textContent = aliases ? `${t("aliases")}: ${aliases}` : "";
+          providerCell.querySelector(".provider-count").textContent = t("endpointCount", {
+            count: group.records.length
+          });
+          row.append(providerCell);
+        }
 
-      row.querySelector(".provider-name").textContent = provider.name;
-      row.querySelector(".aliases").textContent = aliases ? `${t("aliases")}: ${aliases}` : "";
-      row.querySelector(".protocol-pill").textContent = protocolLabel(endpoint.protocol);
-      row.querySelector(".code-text").textContent = endpoint.baseUrl;
-      row.children[3].textContent = endpoint.lastVerified;
-      row.querySelector("a").href = endpoint.source;
-      row.querySelector("a").textContent = t("docs");
-      row.querySelector(".copy-button").textContent = t("copy");
-      row.querySelector(".copy-button").addEventListener("click", async (event) => {
-        await navigator.clipboard.writeText(endpoint.baseUrl);
-        event.currentTarget.textContent = t("copied");
-        setTimeout(() => {
-          event.currentTarget.textContent = t("copy");
-        }, 1200);
+        const protocolCell = document.createElement("td");
+        const protocolPill = document.createElement("span");
+        protocolPill.className = `protocol-pill ${endpoint.protocol}`;
+        protocolPill.textContent = protocolLabel(endpoint.protocol);
+        protocolCell.append(protocolPill);
+
+        const baseUrlCell = document.createElement("td");
+        const baseUrlText = document.createElement("span");
+        baseUrlText.className = "code-text";
+        baseUrlText.textContent = endpoint.baseUrl;
+        baseUrlCell.append(baseUrlText);
+
+        const verifiedCell = document.createElement("td");
+        verifiedCell.textContent = endpoint.lastVerified;
+
+        const sourceCell = document.createElement("td");
+        const sourceLink = document.createElement("a");
+        sourceLink.href = endpoint.source;
+        sourceLink.target = "_blank";
+        sourceLink.rel = "noreferrer";
+        sourceLink.textContent = t("docs");
+        sourceCell.append(sourceLink);
+
+        const copyCell = document.createElement("td");
+        const copyButton = document.createElement("button");
+        copyButton.className = "copy-button";
+        copyButton.type = "button";
+        copyButton.textContent = t("copy");
+        copyButton.addEventListener("click", async (event) => {
+          await navigator.clipboard.writeText(endpoint.baseUrl);
+          event.currentTarget.textContent = t("copied");
+          setTimeout(() => {
+            event.currentTarget.textContent = t("copy");
+          }, 1200);
+        });
+        copyCell.append(copyButton);
+
+        row.append(protocolCell, baseUrlCell, verifiedCell, sourceCell, copyCell);
+        rowsEl.append(row);
       });
-
-      rowsEl.append(row);
     }
   }
 
