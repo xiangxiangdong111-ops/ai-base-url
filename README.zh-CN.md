@@ -6,6 +6,8 @@
 
 直接打开项目站点，即可快速查看现有平台的 base URL：
 
+**[https://ai-base-url.vercel.app/](https://ai-base-url.vercel.app/)**
+
 **[https://xiangxiangdong111-ops.github.io/ai-base-url/](https://xiangxiangdong111-ops.github.io/ai-base-url/)**
 
 站点支持搜索、协议筛选、平台类型筛选、一键复制和语言切换（English / 中文）。

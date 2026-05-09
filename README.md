@@ -6,6 +6,8 @@
 
 Open the live directory to quickly browse current AI provider base URLs:
 
+**[https://ai-base-url.vercel.app/](https://ai-base-url.vercel.app/)**
+
 **[https://xiangxiangdong111-ops.github.io/ai-base-url/](https://xiangxiangdong111-ops.github.io/ai-base-url/)**
 
 The site supports search, protocol filtering, provider type filtering, one-click copy, and language switching (English / 中文).
